@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzm.dao.base.MerchandiseTypeBaseMapper">
+
+
+    <insert id="insertMerchandiseType"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `merchandise_type`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="merchandise!=null">
+                        name,
+                    </if>
+                    <if test="picture!=null">
+                        `picture`,
+                    </if>
+                    <if test="expiration!=null">
+                        `expiration`,
+                    </if>
+                    <if test="purchasePrice!=null">
+                        `purchase_price`,
+                    </if>
+                    <if test="wholesalePrice!=null">
+                        `wholesale_price`,
+                    </if>
+                    <if test="retailPrice!=null">
+                        `retail_price`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="merchandise!=null">
+                    #{merchandise},
+                </if>
+                <if test="picture!=null">
+                    #{picture},
+                </if>
+                <if test="expiration!=null">
+                    #{expiration},
+                </if>
+                <if test="purchasePrice!=null">
+                    #{purchasePrice},
+                </if>
+                <if test="wholesalePrice!=null">
+                    #{wholesalePrice},
+                </if>
+                <if test="retailPrice!=null">
+                    #{retailPrice},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updateMerchandiseType">
+        UPDATE `merchandise_type`
+        SET
+        <trim suffixOverrides=",">
+            <if test="merchandise != null and merchandise!=''">
+                name = #{merchandise},
+            </if>
+            <if test="picture != null and picture!=''">
+                `picture` = #{picture},
+            </if>
+            <if test="expiration != null and expiration!=''">
+                `expiration` = #{expiration},
+            </if>
+            <if test="purchasePrice != null">
+                `purchase_price` = #{purchasePrice},
+            </if>
+            <if test="wholesalePrice != null">
+                `wholesale_price` = #{wholesalePrice},
+            </if>
+            <if test="retailPrice != null">
+                `retail_price` = #{retailPrice},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `merchandise_type`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.merchandise != null and set.merchandise!=''">
+            name = #{set.merchandise},
+        </if>
+        <if test="set.picture != null and set.picture!=''">
+            `picture` = #{set.picture},
+        </if>
+        <if test="set.expiration != null and set.expiration!=''">
+            `expiration` = #{set.expiration},
+        </if>
+        <if test="set.purchasePrice != null">
+            `purchase_price` = #{set.purchasePrice},
+        </if>
+        <if test="set.wholesalePrice != null">
+            `wholesale_price` = #{set.wholesalePrice},
+        </if>
+        <if test="set.retailPrice != null">
+            `retail_price` = #{set.retailPrice},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.idList != null">
+                    `id` in
+                    <foreach collection="where.idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.idSt !=null">
+                `id` >= #{where.idSt} and
+            </if>
+            <if test="where.idEd!=null">
+                `id` &lt;= #{where.idEd} and
+            </if>
+                <if test="where.merchandiseList != null">
+                    `merchandise` in
+                    <foreach collection="where.merchandiseList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyMerchandise!=null and where.fuzzyMerchandise.size()>0">
+                (
+                <foreach collection="where.fuzzyMerchandise"  separator="or" item="item">
+                    `Merchandise` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyMerchandise!=null and where.rightFuzzyMerchandise.size()>0">
+                (
+                <foreach collection="where.rightFuzzyMerchandise"  separator="or" item="item">
+                    `Merchandise` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.pictureList != null">
+                    `picture` in
+                    <foreach collection="where.pictureList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyPicture!=null and where.fuzzyPicture.size()>0">
+                (
+                <foreach collection="where.fuzzyPicture"  separator="or" item="item">
+                    `Picture` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyPicture!=null and where.rightFuzzyPicture.size()>0">
+                (
+                <foreach collection="where.rightFuzzyPicture"  separator="or" item="item">
+                    `Picture` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.expirationList != null">
+                    `expiration` in
+                    <foreach collection="where.expirationList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyExpiration!=null and where.fuzzyExpiration.size()>0">
+                (
+                <foreach collection="where.fuzzyExpiration"  separator="or" item="item">
+                    `Expiration` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyExpiration!=null and where.rightFuzzyExpiration.size()>0">
+                (
+                <foreach collection="where.rightFuzzyExpiration"  separator="or" item="item">
+                    `Expiration` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.purchasePriceList != null">
+                    `purchase_price` in
+                    <foreach collection="where.purchasePriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.purchasePriceSt !=null">
+                `purchase_price` >= #{where.purchasePriceSt} and
+            </if>
+            <if test="where.purchasePriceEd!=null">
+                `purchase_price` &lt;= #{where.purchasePriceEd} and
+            </if>
+                <if test="where.wholesalePriceList != null">
+                    `wholesale_price` in
+                    <foreach collection="where.wholesalePriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.wholesalePriceSt !=null">
+                `wholesale_price` >= #{where.wholesalePriceSt} and
+            </if>
+            <if test="where.wholesalePriceEd!=null">
+                `wholesale_price` &lt;= #{where.wholesalePriceEd} and
+            </if>
+                <if test="where.retailPriceList != null">
+                    `retail_price` in
+                    <foreach collection="where.retailPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.retailPriceSt !=null">
+                `retail_price` >= #{where.retailPriceSt} and
+            </if>
+            <if test="where.retailPriceEd!=null">
+                `retail_price` &lt;= #{where.retailPriceEd} and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="com.jzm.model.MerchandiseType" id="MerchandiseTypeMap">
+        <result property="id" column="id"/>
+        <result property="merchandise" column="merchandise"/>
+        <result property="picture" column="picture"/>
+        <result property="expiration" column="expiration"/>
+        <result property="purchasePrice" column="purchase_price"/>
+        <result property="wholesalePrice" column="wholesale_price"/>
+        <result property="retailPrice" column="retail_price"/>
+    </resultMap>
+
+
+    <select id="queryMerchandiseType" resultMap="MerchandiseTypeMap">
+        select
+        <include refid="baseResult"></include>
+        from  `merchandise_type`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="merchandise != null and merchandise!=''">
+                `merchandise` = #{merchandise} and
+            </if>
+            <if test="picture != null and picture!=''">
+                `picture` = #{picture} and
+            </if>
+            <if test="expiration != null and expiration!=''">
+                `expiration` = #{expiration} and
+            </if>
+            <if test="purchasePrice != null">
+                `purchase_price` = #{purchasePrice} and
+            </if>
+            <if test="wholesalePrice != null">
+                `wholesale_price` = #{wholesalePrice} and
+            </if>
+            <if test="retailPrice != null">
+                `retail_price` = #{retailPrice} and
+            </if>
+            <if test = "(_parameter instanceof com.jzm.model.MerchandiseType$QueryBuilder) == true">
+                <if test="idList != null">
+                    `id` in
+                    <foreach collection="idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                <if test="merchandiseList != null">
+                    `merchandise` in
+                    <foreach collection="merchandiseList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyMerchandise!=null and fuzzyMerchandise.size()>0">
+                    (
+                    <foreach collection="fuzzyMerchandise"  separator="or" item="item">
+                        `Merchandise` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyMerchandise!=null and rightFuzzyMerchandise.size()>0">
+                    (
+                    <foreach collection="rightFuzzyMerchandise"  separator="or" item="item">
+                        `Merchandise` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="pictureList != null">
+                    `picture` in
+                    <foreach collection="pictureList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyPicture!=null and fuzzyPicture.size()>0">
+                    (
+                    <foreach collection="fuzzyPicture"  separator="or" item="item">
+                        `Picture` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPicture!=null and rightFuzzyPicture.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPicture"  separator="or" item="item">
+                        `Picture` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="expirationList != null">
+                    `expiration` in
+                    <foreach collection="expirationList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyExpiration!=null and fuzzyExpiration.size()>0">
+                    (
+                    <foreach collection="fuzzyExpiration"  separator="or" item="item">
+                        `Expiration` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyExpiration!=null and rightFuzzyExpiration.size()>0">
+                    (
+                    <foreach collection="rightFuzzyExpiration"  separator="or" item="item">
+                        `Expiration` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="purchasePriceList != null">
+                    `purchase_price` in
+                    <foreach collection="purchasePriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="purchasePriceSt !=null">
+                    `purchase_price` >= #{purchasePriceSt} and
+                </if>
+                <if test="purchasePriceEd!=null">
+                    `purchase_price` &lt;= #{purchasePriceEd} and
+                </if>
+                <if test="wholesalePriceList != null">
+                    `wholesale_price` in
+                    <foreach collection="wholesalePriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="wholesalePriceSt !=null">
+                    `wholesale_price` >= #{wholesalePriceSt} and
+                </if>
+                <if test="wholesalePriceEd!=null">
+                    `wholesale_price` &lt;= #{wholesalePriceEd} and
+                </if>
+                <if test="retailPriceList != null">
+                    `retail_price` in
+                    <foreach collection="retailPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="retailPriceSt !=null">
+                    `retail_price` >= #{retailPriceSt} and
+                </if>
+                <if test="retailPriceEd!=null">
+                    `retail_price` &lt;= #{retailPriceEd} and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryMerchandiseTypeLimit1" resultMap="MerchandiseTypeMap">
+        select
+        <include refid="baseResult"></include>
+        from  `merchandise_type`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="merchandise != null and merchandise!=''">
+                `merchandise` = #{merchandise} and
+            </if>
+            <if test="picture != null and picture!=''">
+                `picture` = #{picture} and
+            </if>
+            <if test="expiration != null and expiration!=''">
+                `expiration` = #{expiration} and
+            </if>
+            <if test="purchasePrice != null">
+                `purchase_price` = #{purchasePrice} and
+            </if>
+            <if test="wholesalePrice != null">
+                `wholesale_price` = #{wholesalePrice} and
+            </if>
+            <if test="retailPrice != null">
+                `retail_price` = #{retailPrice} and
+            </if>
+            <if test = "(_parameter instanceof com.jzm.model.MerchandiseType$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="merchandiseList != null">
+                        `merchandise` in
+                        <foreach collection="merchandiseList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyMerchandise!=null and fuzzyMerchandise.size()>0">
+                    (
+                    <foreach collection="fuzzyMerchandise"  separator="or" item="item">
+                        `Merchandise` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyMerchandise!=null and rightFuzzyMerchandise.size()>0">
+                    (
+                    <foreach collection="rightFuzzyMerchandise"  separator="or" item="item">
+                        `Merchandise` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="pictureList != null">
+                        `picture` in
+                        <foreach collection="pictureList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyPicture!=null and fuzzyPicture.size()>0">
+                    (
+                    <foreach collection="fuzzyPicture"  separator="or" item="item">
+                        `Picture` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPicture!=null and rightFuzzyPicture.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPicture"  separator="or" item="item">
+                        `Picture` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="expirationList != null">
+                        `expiration` in
+                        <foreach collection="expirationList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyExpiration!=null and fuzzyExpiration.size()>0">
+                    (
+                    <foreach collection="fuzzyExpiration"  separator="or" item="item">
+                        `Expiration` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyExpiration!=null and rightFuzzyExpiration.size()>0">
+                    (
+                    <foreach collection="rightFuzzyExpiration"  separator="or" item="item">
+                        `Expiration` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="purchasePriceList != null">
+                        `purchase_price` in
+                        <foreach collection="purchasePriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="purchasePriceSt !=null">
+                    `purchase_price` >= #{purchasePriceSt} and
+                </if>
+                <if test="purchasePriceEd!=null">
+                    `purchase_price` &lt;= #{purchasePriceEd} and
+                </if>
+                    <if test="wholesalePriceList != null">
+                        `wholesale_price` in
+                        <foreach collection="wholesalePriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="wholesalePriceSt !=null">
+                    `wholesale_price` >= #{wholesalePriceSt} and
+                </if>
+                <if test="wholesalePriceEd!=null">
+                    `wholesale_price` &lt;= #{wholesalePriceEd} and
+                </if>
+                    <if test="retailPriceList != null">
+                        `retail_price` in
+                        <foreach collection="retailPriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="retailPriceSt !=null">
+                    `retail_price` >= #{retailPriceSt} and
+                </if>
+                <if test="retailPriceEd!=null">
+                    `retail_price` &lt;= #{retailPriceEd} and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `merchandise`,
+        `picture`,
+        `expiration`,
+        `purchase_price`,
+        `wholesale_price`,
+        `retail_price`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.jzm.model.MerchandiseType$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.merchandise==true">
+                        `merchandise`,
+                    </if>
+                    <if test="fetchFields.fetchFields.picture==true">
+                        `picture`,
+                    </if>
+                    <if test="fetchFields.fetchFields.expiration==true">
+                        `expiration`,
+                    </if>
+                    <if test="fetchFields.fetchFields.purchasePrice==true">
+                        `purchase_price`,
+                    </if>
+                    <if test="fetchFields.fetchFields.wholesalePrice==true">
+                        `wholesale_price`,
+                    </if>
+                    <if test="fetchFields.fetchFields.retailPrice==true">
+                        `retail_price`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.merchandise==null">
+                        `merchandise`,
+                    </if>
+                    <if test="fetchFields.excludeFields.picture==null">
+                        `picture`,
+                    </if>
+                    <if test="fetchFields.excludeFields.expiration==null">
+                        `expiration`,
+                    </if>
+                    <if test="fetchFields.excludeFields.purchasePrice==null">
+                        `purchase_price`,
+                    </if>
+                    <if test="fetchFields.excludeFields.wholesalePrice==null">
+                        `wholesale_price`,
+                    </if>
+                    <if test="fetchFields.excludeFields.retailPrice==null">
+                        `retail_price`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.jzm.model.MerchandiseType$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>
