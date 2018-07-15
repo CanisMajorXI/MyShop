@@ -10,7 +10,7 @@ import java.util.List;
 */
 public class PurchaseRecord implements Serializable {
 
-    private static final long serialVersionUID = 1531646095466L;
+    private static final long serialVersionUID = 1531648960282L;
 
 
     /**

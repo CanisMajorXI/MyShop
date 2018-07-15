@@ -10,7 +10,7 @@ import java.util.List;
 */
 public class VipType implements Serializable {
 
-    private static final long serialVersionUID = 1531646106121L;
+    private static final long serialVersionUID = 1531648978878L;
 
 
     /**

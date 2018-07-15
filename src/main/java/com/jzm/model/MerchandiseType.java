@@ -10,7 +10,7 @@ import java.util.List;
 */
 public class MerchandiseType implements Serializable {
 
-    private static final long serialVersionUID = 1531646078296L;
+    private static final long serialVersionUID = 1531648957348L;
 
 
     /**
@@ -24,7 +24,7 @@ public class MerchandiseType implements Serializable {
     * 商品名称
     * isNullAble:0
     */
-    private String merchandise;
+    private String name;
 
     /**
     * 商品图片
@@ -61,9 +61,9 @@ public class MerchandiseType implements Serializable {
 
     public Integer getId(){return this.id;}
 
-    public void setMerchandise(String merchandise){this.merchandise = merchandise;}
+    public void setName(String name){this.name = name;}
 
-    public String getMerchandise(){return this.merchandise;}
+    public String getName(){return this.name;}
 
     public void setPicture(String picture){this.picture = picture;}
 
@@ -88,7 +88,7 @@ public class MerchandiseType implements Serializable {
     public String toString() {
         return "MerchandiseType{" +
                 "id='" + id + '\'' +
-                "merchandise='" + merchandise + '\'' +
+                "name='" + name + '\'' +
                 "picture='" + picture + '\'' +
                 "expiration='" + expiration + '\'' +
                 "purchasePrice='" + purchasePrice + '\'' +
@@ -154,18 +154,18 @@ public class MerchandiseType implements Serializable {
 
         public Integer getIdEd(){return this.idEd;}
 
-        private List<String> merchandiseList;
+        private List<String> nameList;
 
-        public List<String> getMerchandiseList(){return this.merchandiseList;}
+        public List<String> getNameList(){return this.nameList;}
 
 
-        private List<String> fuzzyMerchandise;
+        private List<String> fuzzyName;
 
-        public List<String> getFuzzyMerchandise(){return this.fuzzyMerchandise;}
+        public List<String> getFuzzyName(){return this.fuzzyName;}
 
-        private List<String> rightFuzzyMerchandise;
+        private List<String> rightFuzzyName;
 
-        public List<String> getRightFuzzyMerchandise(){return this.rightFuzzyMerchandise;}
+        public List<String> getRightFuzzyName(){return this.rightFuzzyName;}
         private List<String> pictureList;
 
         public List<String> getPictureList(){return this.pictureList;}
@@ -271,48 +271,48 @@ public class MerchandiseType implements Serializable {
             return this;
         }
 
-        public QueryBuilder fuzzyMerchandise (List<String> fuzzyMerchandise){
-            this.fuzzyMerchandise = fuzzyMerchandise;
+        public QueryBuilder fuzzyName (List<String> fuzzyName){
+            this.fuzzyName = fuzzyName;
             return this;
         }
 
-        public QueryBuilder fuzzyMerchandise (String ... fuzzyMerchandise){
-            this.fuzzyMerchandise = solveNullList(fuzzyMerchandise);
+        public QueryBuilder fuzzyName (String ... fuzzyName){
+            this.fuzzyName = solveNullList(fuzzyName);
             return this;
         }
 
-        public QueryBuilder rightFuzzyMerchandise (List<String> rightFuzzyMerchandise){
-            this.rightFuzzyMerchandise = rightFuzzyMerchandise;
+        public QueryBuilder rightFuzzyName (List<String> rightFuzzyName){
+            this.rightFuzzyName = rightFuzzyName;
             return this;
         }
 
-        public QueryBuilder rightFuzzyMerchandise (String ... rightFuzzyMerchandise){
-            this.rightFuzzyMerchandise = solveNullList(rightFuzzyMerchandise);
+        public QueryBuilder rightFuzzyName (String ... rightFuzzyName){
+            this.rightFuzzyName = solveNullList(rightFuzzyName);
             return this;
         }
 
-        public QueryBuilder merchandise(String merchandise){
-            setMerchandise(merchandise);
+        public QueryBuilder name(String name){
+            setName(name);
             return this;
         }
 
-        public QueryBuilder merchandiseList(String ... merchandise){
-            this.merchandiseList = solveNullList(merchandise);
+        public QueryBuilder nameList(String ... name){
+            this.nameList = solveNullList(name);
             return this;
         }
 
-        public QueryBuilder merchandiseList(List<String> merchandise){
-            this.merchandiseList = merchandise;
+        public QueryBuilder nameList(List<String> name){
+            this.nameList = name;
             return this;
         }
 
-        public QueryBuilder fetchMerchandise(){
-            setFetchFields("fetchFields","merchandise");
+        public QueryBuilder fetchName(){
+            setFetchFields("fetchFields","name");
             return this;
         }
 
-        public QueryBuilder excludeMerchandise(){
-            setFetchFields("excludeFields","merchandise");
+        public QueryBuilder excludeName(){
+            setFetchFields("excludeFields","name");
             return this;
         }
 
@@ -583,18 +583,18 @@ public class MerchandiseType implements Serializable {
 
         public Integer getIdEd(){return this.idEd;}
 
-        private List<String> merchandiseList;
+        private List<String> nameList;
 
-        public List<String> getMerchandiseList(){return this.merchandiseList;}
+        public List<String> getNameList(){return this.nameList;}
 
 
-        private List<String> fuzzyMerchandise;
+        private List<String> fuzzyName;
 
-        public List<String> getFuzzyMerchandise(){return this.fuzzyMerchandise;}
+        public List<String> getFuzzyName(){return this.fuzzyName;}
 
-        private List<String> rightFuzzyMerchandise;
+        private List<String> rightFuzzyName;
 
-        public List<String> getRightFuzzyMerchandise(){return this.rightFuzzyMerchandise;}
+        public List<String> getRightFuzzyName(){return this.rightFuzzyName;}
         private List<String> pictureList;
 
         public List<String> getPictureList(){return this.pictureList;}
@@ -682,33 +682,33 @@ public class MerchandiseType implements Serializable {
             return this;
         }
 
-        public ConditionBuilder fuzzyMerchandise (List<String> fuzzyMerchandise){
-            this.fuzzyMerchandise = fuzzyMerchandise;
+        public ConditionBuilder fuzzyName (List<String> fuzzyName){
+            this.fuzzyName = fuzzyName;
             return this;
         }
 
-        public ConditionBuilder fuzzyMerchandise (String ... fuzzyMerchandise){
-            this.fuzzyMerchandise = solveNullList(fuzzyMerchandise);
+        public ConditionBuilder fuzzyName (String ... fuzzyName){
+            this.fuzzyName = solveNullList(fuzzyName);
             return this;
         }
 
-        public ConditionBuilder rightFuzzyMerchandise (List<String> rightFuzzyMerchandise){
-            this.rightFuzzyMerchandise = rightFuzzyMerchandise;
+        public ConditionBuilder rightFuzzyName (List<String> rightFuzzyName){
+            this.rightFuzzyName = rightFuzzyName;
             return this;
         }
 
-        public ConditionBuilder rightFuzzyMerchandise (String ... rightFuzzyMerchandise){
-            this.rightFuzzyMerchandise = solveNullList(rightFuzzyMerchandise);
+        public ConditionBuilder rightFuzzyName (String ... rightFuzzyName){
+            this.rightFuzzyName = solveNullList(rightFuzzyName);
             return this;
         }
 
-        public ConditionBuilder merchandiseList(String ... merchandise){
-            this.merchandiseList = solveNullList(merchandise);
+        public ConditionBuilder nameList(String ... name){
+            this.nameList = solveNullList(name);
             return this;
         }
 
-        public ConditionBuilder merchandiseList(List<String> merchandise){
-            this.merchandiseList = merchandise;
+        public ConditionBuilder nameList(List<String> name){
+            this.nameList = name;
             return this;
         }
 
@@ -878,8 +878,8 @@ public class MerchandiseType implements Serializable {
             this.obj.setId(id);
             return this;
         }
-        public Builder merchandise(String merchandise){
-            this.obj.setMerchandise(merchandise);
+        public Builder name(String name){
+            this.obj.setName(name);
             return this;
         }
         public Builder picture(String picture){

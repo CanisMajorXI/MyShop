@@ -11,8 +11,8 @@
                     <if test="id!=null">
                         `id`,
                     </if>
-                    <if test="merchandise!=null">
-                        name,
+                    <if test="name!=null">
+                        `name`,
                     </if>
                     <if test="picture!=null">
                         `picture`,
@@ -37,8 +37,8 @@
                 <if test="id!=null">
                     #{id},
                 </if>
-                <if test="merchandise!=null">
-                    #{merchandise},
+                <if test="name!=null">
+                    #{name},
                 </if>
                 <if test="picture!=null">
                     #{picture},
@@ -66,8 +66,8 @@
         UPDATE `merchandise_type`
         SET
         <trim suffixOverrides=",">
-            <if test="merchandise != null and merchandise!=''">
-                name = #{merchandise},
+            <if test="name != null and name!=''">
+                `name` = #{name},
             </if>
             <if test="picture != null and picture!=''">
                 `picture` = #{picture},
@@ -95,8 +95,8 @@
         UPDATE `merchandise_type`
         SET
         <trim suffixOverrides=",">
-        <if test="set.merchandise != null and set.merchandise!=''">
-            name = #{set.merchandise},
+        <if test="set.name != null and set.name!=''">
+            `name` = #{set.name},
         </if>
         <if test="set.picture != null and set.picture!=''">
             `picture` = #{set.picture},
@@ -127,23 +127,23 @@
             <if test="where.idEd!=null">
                 `id` &lt;= #{where.idEd} and
             </if>
-                <if test="where.merchandiseList != null">
-                    `merchandise` in
-                    <foreach collection="where.merchandiseList" close=")" open="(" separator="," item="item">
+                <if test="where.nameList != null">
+                    `name` in
+                    <foreach collection="where.nameList" close=")" open="(" separator="," item="item">
                         #{item}
                     </foreach> and
                 </if>
-            <if test ="where.fuzzyMerchandise!=null and where.fuzzyMerchandise.size()>0">
+            <if test ="where.fuzzyName!=null and where.fuzzyName.size()>0">
                 (
-                <foreach collection="where.fuzzyMerchandise"  separator="or" item="item">
-                    `Merchandise` like concat('%',#{item},'%')
+                <foreach collection="where.fuzzyName"  separator="or" item="item">
+                    `Name` like concat('%',#{item},'%')
                 </foreach>
                 ) and
             </if>
-            <if test ="where.rightFuzzyMerchandise!=null and where.rightFuzzyMerchandise.size()>0">
+            <if test ="where.rightFuzzyName!=null and where.rightFuzzyName.size()>0">
                 (
-                <foreach collection="where.rightFuzzyMerchandise"  separator="or" item="item">
-                    `Merchandise` like concat(#{item},'%')
+                <foreach collection="where.rightFuzzyName"  separator="or" item="item">
+                    `Name` like concat(#{item},'%')
                 </foreach>
                 ) and
             </if>
@@ -229,7 +229,7 @@
 
     <resultMap type="com.jzm.model.MerchandiseType" id="MerchandiseTypeMap">
         <result property="id" column="id"/>
-        <result property="merchandise" column="merchandise"/>
+        <result property="name" column="name"/>
         <result property="picture" column="picture"/>
         <result property="expiration" column="expiration"/>
         <result property="purchasePrice" column="purchase_price"/>
@@ -246,8 +246,8 @@
             <if test="id != null">
                 `id` = #{id} and
             </if>
-            <if test="merchandise != null and merchandise!=''">
-                `merchandise` = #{merchandise} and
+            <if test="name != null and name!=''">
+                `name` = #{name} and
             </if>
             <if test="picture != null and picture!=''">
                 `picture` = #{picture} and
@@ -277,23 +277,23 @@
                 <if test="idEd!=null">
                     `id` &lt;= #{idEd} and
                 </if>
-                <if test="merchandiseList != null">
-                    `merchandise` in
-                    <foreach collection="merchandiseList" close=")" open="(" separator="," item="item">
+                <if test="nameList != null">
+                    `name` in
+                    <foreach collection="nameList" close=")" open="(" separator="," item="item">
                         #{item}
                     </foreach> and
                 </if>
-                <if test ="fuzzyMerchandise!=null and fuzzyMerchandise.size()>0">
+                <if test ="fuzzyName!=null and fuzzyName.size()>0">
                     (
-                    <foreach collection="fuzzyMerchandise"  separator="or" item="item">
-                        `Merchandise` like concat('%',#{item},'%')
+                    <foreach collection="fuzzyName"  separator="or" item="item">
+                        `Name` like concat('%',#{item},'%')
                     </foreach>
                     ) and
                 </if>
-                <if test ="rightFuzzyMerchandise!=null and rightFuzzyMerchandise.size()>0">
+                <if test ="rightFuzzyName!=null and rightFuzzyName.size()>0">
                     (
-                    <foreach collection="rightFuzzyMerchandise"  separator="or" item="item">
-                        `Merchandise` like concat(#{item},'%')
+                    <foreach collection="rightFuzzyName"  separator="or" item="item">
+                        `Name` like concat(#{item},'%')
                     </foreach>
                     ) and
                 </if>
@@ -385,8 +385,8 @@
             <if test="id != null">
                 `id` = #{id} and
             </if>
-            <if test="merchandise != null and merchandise!=''">
-                `merchandise` = #{merchandise} and
+            <if test="name != null and name!=''">
+                `name` = #{name} and
             </if>
             <if test="picture != null and picture!=''">
                 `picture` = #{picture} and
@@ -416,23 +416,23 @@
                 <if test="idEd!=null">
                     `id` &lt;= #{idEd} and
                 </if>
-                    <if test="merchandiseList != null">
-                        `merchandise` in
-                        <foreach collection="merchandiseList" close=")" open="(" separator="," item="item">
+                    <if test="nameList != null">
+                        `name` in
+                        <foreach collection="nameList" close=")" open="(" separator="," item="item">
                             #{item}
                         </foreach> and
                     </if>
-                <if test ="fuzzyMerchandise!=null and fuzzyMerchandise.size()>0">
+                <if test ="fuzzyName!=null and fuzzyName.size()>0">
                     (
-                    <foreach collection="fuzzyMerchandise"  separator="or" item="item">
-                        `Merchandise` like concat('%',#{item},'%')
+                    <foreach collection="fuzzyName"  separator="or" item="item">
+                        `Name` like concat('%',#{item},'%')
                     </foreach>
                     ) and
                 </if>
-                <if test ="rightFuzzyMerchandise!=null and rightFuzzyMerchandise.size()>0">
+                <if test ="rightFuzzyName!=null and rightFuzzyName.size()>0">
                     (
-                    <foreach collection="rightFuzzyMerchandise"  separator="or" item="item">
-                        `Merchandise` like concat(#{item},'%')
+                    <foreach collection="rightFuzzyName"  separator="or" item="item">
+                        `Name` like concat(#{item},'%')
                     </foreach>
                     ) and
                 </if>
@@ -520,7 +520,7 @@
     <sql id="allResult">
         <trim suffixOverrides=",">
         `id`,
-        `merchandise`,
+        `name`,
         `picture`,
         `expiration`,
         `purchase_price`,
@@ -549,8 +549,8 @@
                     <if test="fetchFields.fetchFields.id==true">
                         `id`,
                     </if>
-                    <if test="fetchFields.fetchFields.merchandise==true">
-                        `merchandise`,
+                    <if test="fetchFields.fetchFields.name==true">
+                        `name`,
                     </if>
                     <if test="fetchFields.fetchFields.picture==true">
                         `picture`,
@@ -572,8 +572,8 @@
                     <if test="fetchFields.excludeFields.id==null">
                         `id`,
                     </if>
-                    <if test="fetchFields.excludeFields.merchandise==null">
-                        `merchandise`,
+                    <if test="fetchFields.excludeFields.name==null">
+                        `name`,
                     </if>
                     <if test="fetchFields.excludeFields.picture==null">
                         `picture`,
