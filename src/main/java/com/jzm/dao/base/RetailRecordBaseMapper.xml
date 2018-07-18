@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzm.dao.base.RetailRecordBaseMapper">
+
+
+    <insert id="insertRetailRecord"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `retail_record`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="merchandiseId!=null">
+                        `merchandise_id`,
+                    </if>
+                    <if test="date!=null">
+                        `date`,
+                    </if>
+                    <if test="vipid!=null">
+                        `vipid`,
+                    </if>
+                    <if test="realPrice!=null">
+                        `real_price`,
+                    </if>
+                    <if test="salesmenId!=null">
+                        `salesmen_id`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="merchandiseId!=null">
+                    #{merchandiseId},
+                </if>
+                <if test="date!=null">
+                    #{date},
+                </if>
+                <if test="vipid!=null">
+                    #{vipid},
+                </if>
+                <if test="realPrice!=null">
+                    #{realPrice},
+                </if>
+                <if test="salesmenId!=null">
+                    #{salesmenId},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updateRetailRecord">
+        UPDATE `retail_record`
+        SET
+        <trim suffixOverrides=",">
+            <if test="merchandiseId != null">
+                `merchandise_id` = #{merchandiseId},
+            </if>
+            <if test="date != null">
+                `date` = #{date},
+            </if>
+            <if test="vipid != null">
+                `vipid` = #{vipid},
+            </if>
+            <if test="realPrice != null">
+                `real_price` = #{realPrice},
+            </if>
+            <if test="salesmenId != null">
+                `salesmen_id` = #{salesmenId},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `retail_record`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.merchandiseId != null">
+            `merchandise_id` = #{set.merchandiseId},
+        </if>
+        <if test="set.date != null">
+            `date` = #{set.date},
+        </if>
+        <if test="set.vipid != null">
+            `vipid` = #{set.vipid},
+        </if>
+        <if test="set.realPrice != null">
+            `real_price` = #{set.realPrice},
+        </if>
+        <if test="set.salesmenId != null">
+            `salesmen_id` = #{set.salesmenId},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.idList != null">
+                    `id` in
+                    <foreach collection="where.idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.idSt !=null">
+                `id` >= #{where.idSt} and
+            </if>
+            <if test="where.idEd!=null">
+                `id` &lt;= #{where.idEd} and
+            </if>
+                <if test="where.merchandiseIdList != null">
+                    `merchandise_id` in
+                    <foreach collection="where.merchandiseIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.merchandiseIdSt !=null">
+                `merchandise_id` >= #{where.merchandiseIdSt} and
+            </if>
+            <if test="where.merchandiseIdEd!=null">
+                `merchandise_id` &lt;= #{where.merchandiseIdEd} and
+            </if>
+                <if test="where.dateList != null">
+                    `date` in
+                    <foreach collection="where.dateList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.dateSt !=null">
+                `date` >= #{where.dateSt} and
+            </if>
+            <if test="where.dateEd!=null">
+                `date` &lt;= #{where.dateEd} and
+            </if>
+                <if test="where.vipidList != null">
+                    `vipid` in
+                    <foreach collection="where.vipidList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.vipidSt !=null">
+                `vipid` >= #{where.vipidSt} and
+            </if>
+            <if test="where.vipidEd!=null">
+                `vipid` &lt;= #{where.vipidEd} and
+            </if>
+                <if test="where.realPriceList != null">
+                    `real_price` in
+                    <foreach collection="where.realPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.realPriceSt !=null">
+                `real_price` >= #{where.realPriceSt} and
+            </if>
+            <if test="where.realPriceEd!=null">
+                `real_price` &lt;= #{where.realPriceEd} and
+            </if>
+                <if test="where.salesmenIdList != null">
+                    `salesmen_id` in
+                    <foreach collection="where.salesmenIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.salesmenIdSt !=null">
+                `salesmen_id` >= #{where.salesmenIdSt} and
+            </if>
+            <if test="where.salesmenIdEd!=null">
+                `salesmen_id` &lt;= #{where.salesmenIdEd} and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="com.jzm.model.RetailRecord" id="RetailRecordMap">
+        <result property="id" column="id"/>
+        <result property="merchandiseId" column="merchandise_id"/>
+        <result property="date" column="date"/>
+        <result property="vipid" column="vipid"/>
+        <result property="realPrice" column="real_price"/>
+        <result property="salesmenId" column="salesmen_id"/>
+    </resultMap>
+
+
+    <select id="queryRetailRecord" resultMap="RetailRecordMap">
+        select
+        <include refid="baseResult"></include>
+        from  `retail_record`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="merchandiseId != null">
+                `merchandise_id` = #{merchandiseId} and
+            </if>
+            <if test="date != null">
+                `date` = #{date} and
+            </if>
+            <if test="vipid != null">
+                `vipid` = #{vipid} and
+            </if>
+            <if test="realPrice != null">
+                `real_price` = #{realPrice} and
+            </if>
+            <if test="salesmenId != null">
+                `salesmen_id` = #{salesmenId} and
+            </if>
+            <if test = "(_parameter instanceof com.jzm.model.RetailRecord$QueryBuilder) == true">
+                <if test="idList != null">
+                    `id` in
+                    <foreach collection="idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                <if test="merchandiseIdList != null">
+                    `merchandise_id` in
+                    <foreach collection="merchandiseIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="merchandiseIdSt !=null">
+                    `merchandise_id` >= #{merchandiseIdSt} and
+                </if>
+                <if test="merchandiseIdEd!=null">
+                    `merchandise_id` &lt;= #{merchandiseIdEd} and
+                </if>
+                <if test="dateList != null">
+                    `date` in
+                    <foreach collection="dateList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="dateSt !=null">
+                    `date` >= #{dateSt} and
+                </if>
+                <if test="dateEd!=null">
+                    `date` &lt;= #{dateEd} and
+                </if>
+                <if test="vipidList != null">
+                    `vipid` in
+                    <foreach collection="vipidList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="vipidSt !=null">
+                    `vipid` >= #{vipidSt} and
+                </if>
+                <if test="vipidEd!=null">
+                    `vipid` &lt;= #{vipidEd} and
+                </if>
+                <if test="realPriceList != null">
+                    `real_price` in
+                    <foreach collection="realPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="realPriceSt !=null">
+                    `real_price` >= #{realPriceSt} and
+                </if>
+                <if test="realPriceEd!=null">
+                    `real_price` &lt;= #{realPriceEd} and
+                </if>
+                <if test="salesmenIdList != null">
+                    `salesmen_id` in
+                    <foreach collection="salesmenIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="salesmenIdSt !=null">
+                    `salesmen_id` >= #{salesmenIdSt} and
+                </if>
+                <if test="salesmenIdEd!=null">
+                    `salesmen_id` &lt;= #{salesmenIdEd} and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryRetailRecordLimit1" resultMap="RetailRecordMap">
+        select
+        <include refid="baseResult"></include>
+        from  `retail_record`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="merchandiseId != null">
+                `merchandise_id` = #{merchandiseId} and
+            </if>
+            <if test="date != null">
+                `date` = #{date} and
+            </if>
+            <if test="vipid != null">
+                `vipid` = #{vipid} and
+            </if>
+            <if test="realPrice != null">
+                `real_price` = #{realPrice} and
+            </if>
+            <if test="salesmenId != null">
+                `salesmen_id` = #{salesmenId} and
+            </if>
+            <if test = "(_parameter instanceof com.jzm.model.RetailRecord$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="merchandiseIdList != null">
+                        `merchandise_id` in
+                        <foreach collection="merchandiseIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="merchandiseIdSt !=null">
+                    `merchandise_id` >= #{merchandiseIdSt} and
+                </if>
+                <if test="merchandiseIdEd!=null">
+                    `merchandise_id` &lt;= #{merchandiseIdEd} and
+                </if>
+                    <if test="dateList != null">
+                        `date` in
+                        <foreach collection="dateList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="dateSt !=null">
+                    `date` >= #{dateSt} and
+                </if>
+                <if test="dateEd!=null">
+                    `date` &lt;= #{dateEd} and
+                </if>
+                    <if test="vipidList != null">
+                        `vipid` in
+                        <foreach collection="vipidList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="vipidSt !=null">
+                    `vipid` >= #{vipidSt} and
+                </if>
+                <if test="vipidEd!=null">
+                    `vipid` &lt;= #{vipidEd} and
+                </if>
+                    <if test="realPriceList != null">
+                        `real_price` in
+                        <foreach collection="realPriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="realPriceSt !=null">
+                    `real_price` >= #{realPriceSt} and
+                </if>
+                <if test="realPriceEd!=null">
+                    `real_price` &lt;= #{realPriceEd} and
+                </if>
+                    <if test="salesmenIdList != null">
+                        `salesmen_id` in
+                        <foreach collection="salesmenIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="salesmenIdSt !=null">
+                    `salesmen_id` >= #{salesmenIdSt} and
+                </if>
+                <if test="salesmenIdEd!=null">
+                    `salesmen_id` &lt;= #{salesmenIdEd} and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `merchandise_id`,
+        `date`,
+        `vipid`,
+        `real_price`,
+        `salesmen_id`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.jzm.model.RetailRecord$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.merchandiseId==true">
+                        `merchandise_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.date==true">
+                        `date`,
+                    </if>
+                    <if test="fetchFields.fetchFields.vipid==true">
+                        `vipid`,
+                    </if>
+                    <if test="fetchFields.fetchFields.realPrice==true">
+                        `real_price`,
+                    </if>
+                    <if test="fetchFields.fetchFields.salesmenId==true">
+                        `salesmen_id`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.merchandiseId==null">
+                        `merchandise_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.date==null">
+                        `date`,
+                    </if>
+                    <if test="fetchFields.excludeFields.vipid==null">
+                        `vipid`,
+                    </if>
+                    <if test="fetchFields.excludeFields.realPrice==null">
+                        `real_price`,
+                    </if>
+                    <if test="fetchFields.excludeFields.salesmenId==null">
+                        `salesmen_id`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.jzm.model.RetailRecord$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>
