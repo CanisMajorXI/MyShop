@@ -1,4 +1,9 @@
 package com.jzm.model;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.jzm.util.LocalDateDeserializer;
+import com.jzm.util.LocalDateSerializer;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,17 +15,17 @@ import java.util.List;
 */
 public class PurchaseRecord implements Serializable {
 
-    private static final long serialVersionUID = 1531648960282L;
+    private static final long serialVersionUID = 1531812026799L;
 
 
     /**
-    * 主键
     * 进货记录的Id
     * isNullAble:0
     */
     private Integer id;
 
     /**
+    * 主键
     * 进的商品的Id
     * isNullAble:0
     */
@@ -30,7 +35,9 @@ public class PurchaseRecord implements Serializable {
     * 进货记录日期
     * isNullAble:0
     */
-    private java.time.LocalDate date;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private java.time.LocalDateTime date;
 
 
     public void setId(Integer id){this.id = id;}
@@ -41,9 +48,9 @@ public class PurchaseRecord implements Serializable {
 
     public Integer getMerchandiseId(){return this.merchandiseId;}
 
-    public void setDate(java.time.LocalDate date){this.date = date;}
+    public void setDate(java.time.LocalDateTime date){this.date = date;}
 
-    public java.time.LocalDate getDate(){return this.date;}
+    public java.time.LocalDateTime getDate(){return this.date;}
     @Override
     public String toString() {
         return "PurchaseRecord{" +
@@ -122,17 +129,17 @@ public class PurchaseRecord implements Serializable {
 
         public Integer getMerchandiseIdEd(){return this.merchandiseIdEd;}
 
-        private List<java.time.LocalDate> dateList;
+        private List<java.time.LocalDateTime> dateList;
 
-        public List<java.time.LocalDate> getDateList(){return this.dateList;}
+        public List<java.time.LocalDateTime> getDateList(){return this.dateList;}
 
-        private java.time.LocalDate dateSt;
+        private java.time.LocalDateTime dateSt;
 
-        private java.time.LocalDate dateEd;
+        private java.time.LocalDateTime dateEd;
 
-        public java.time.LocalDate getDateSt(){return this.dateSt;}
+        public java.time.LocalDateTime getDateSt(){return this.dateSt;}
 
-        public java.time.LocalDate getDateEd(){return this.dateEd;}
+        public java.time.LocalDateTime getDateEd(){return this.dateEd;}
 
         private QueryBuilder (){
             this.fetchFields = new HashMap<>();
@@ -220,33 +227,33 @@ public class PurchaseRecord implements Serializable {
             return this;
         }
 
-        public QueryBuilder dateBetWeen(java.time.LocalDate dateSt,java.time.LocalDate dateEd){
+        public QueryBuilder dateBetWeen(java.time.LocalDateTime dateSt,java.time.LocalDateTime dateEd){
             this.dateSt = dateSt;
             this.dateEd = dateEd;
             return this;
         }
 
-        public QueryBuilder dateGreaterEqThan(java.time.LocalDate dateSt){
+        public QueryBuilder dateGreaterEqThan(java.time.LocalDateTime dateSt){
             this.dateSt = dateSt;
             return this;
         }
-        public QueryBuilder dateLessEqThan(java.time.LocalDate dateEd){
+        public QueryBuilder dateLessEqThan(java.time.LocalDateTime dateEd){
             this.dateEd = dateEd;
             return this;
         }
 
 
-        public QueryBuilder date(java.time.LocalDate date){
+        public QueryBuilder date(java.time.LocalDateTime date){
             setDate(date);
             return this;
         }
 
-        public QueryBuilder dateList(java.time.LocalDate ... date){
+        public QueryBuilder dateList(java.time.LocalDateTime ... date){
             this.dateList = solveNullList(date);
             return this;
         }
 
-        public QueryBuilder dateList(List<java.time.LocalDate> date){
+        public QueryBuilder dateList(List<java.time.LocalDateTime> date){
             this.dateList = date;
             return this;
         }
@@ -327,17 +334,17 @@ public class PurchaseRecord implements Serializable {
 
         public Integer getMerchandiseIdEd(){return this.merchandiseIdEd;}
 
-        private List<java.time.LocalDate> dateList;
+        private List<java.time.LocalDateTime> dateList;
 
-        public List<java.time.LocalDate> getDateList(){return this.dateList;}
+        public List<java.time.LocalDateTime> getDateList(){return this.dateList;}
 
-        private java.time.LocalDate dateSt;
+        private java.time.LocalDateTime dateSt;
 
-        private java.time.LocalDate dateEd;
+        private java.time.LocalDateTime dateEd;
 
-        public java.time.LocalDate getDateSt(){return this.dateSt;}
+        public java.time.LocalDateTime getDateSt(){return this.dateSt;}
 
-        public java.time.LocalDate getDateEd(){return this.dateEd;}
+        public java.time.LocalDateTime getDateEd(){return this.dateEd;}
 
 
         public ConditionBuilder idBetWeen(Integer idSt,Integer idEd){
@@ -392,28 +399,28 @@ public class PurchaseRecord implements Serializable {
             return this;
         }
 
-        public ConditionBuilder dateBetWeen(java.time.LocalDate dateSt,java.time.LocalDate dateEd){
+        public ConditionBuilder dateBetWeen(java.time.LocalDateTime dateSt,java.time.LocalDateTime dateEd){
             this.dateSt = dateSt;
             this.dateEd = dateEd;
             return this;
         }
 
-        public ConditionBuilder dateGreaterEqThan(java.time.LocalDate dateSt){
+        public ConditionBuilder dateGreaterEqThan(java.time.LocalDateTime dateSt){
             this.dateSt = dateSt;
             return this;
         }
-        public ConditionBuilder dateLessEqThan(java.time.LocalDate dateEd){
+        public ConditionBuilder dateLessEqThan(java.time.LocalDateTime dateEd){
             this.dateEd = dateEd;
             return this;
         }
 
 
-        public ConditionBuilder dateList(java.time.LocalDate ... date){
+        public ConditionBuilder dateList(java.time.LocalDateTime ... date){
             this.dateList = solveNullList(date);
             return this;
         }
 
-        public ConditionBuilder dateList(List<java.time.LocalDate> date){
+        public ConditionBuilder dateList(List<java.time.LocalDateTime> date){
             this.dateList = date;
             return this;
         }
@@ -450,7 +457,7 @@ public class PurchaseRecord implements Serializable {
             this.obj.setMerchandiseId(merchandiseId);
             return this;
         }
-        public Builder date(java.time.LocalDate date){
+        public Builder date(java.time.LocalDateTime date){
             this.obj.setDate(date);
             return this;
         }

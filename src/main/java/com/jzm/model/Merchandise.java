@@ -1,4 +1,12 @@
 package com.jzm.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.jzm.util.LocalDateDeserializer;
+import com.jzm.util.LocalDateSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +26,7 @@ public class Merchandise implements Serializable {
     * 商品id 为主码，并且自增
     * isNullAble:0
     */
+
     private Integer id;
 
     /**
@@ -30,6 +39,8 @@ public class Merchandise implements Serializable {
     * 商品生产时间
     * isNullAble:0
     */
+   @JsonDeserialize(using = LocalDateDeserializer.class)
+   @JsonSerialize(using = LocalDateSerializer.class)
     private java.time.LocalDate productDate;
 
     /**

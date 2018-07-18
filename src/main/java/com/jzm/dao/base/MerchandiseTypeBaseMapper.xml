@@ -72,7 +72,7 @@
             <if test="picture != null and picture!=''">
                 `picture` = #{picture},
             </if>
-            <if test="expiration != null and expiration!=''">
+            <if test="expiration != null">
                 `expiration` = #{expiration},
             </if>
             <if test="purchasePrice != null">
@@ -101,7 +101,7 @@
         <if test="set.picture != null and set.picture!=''">
             `picture` = #{set.picture},
         </if>
-        <if test="set.expiration != null and set.expiration!=''">
+        <if test="set.expiration != null">
             `expiration` = #{set.expiration},
         </if>
         <if test="set.purchasePrice != null">
@@ -173,19 +173,11 @@
                         #{item}
                     </foreach> and
                 </if>
-            <if test ="where.fuzzyExpiration!=null and where.fuzzyExpiration.size()>0">
-                (
-                <foreach collection="where.fuzzyExpiration"  separator="or" item="item">
-                    `Expiration` like concat('%',#{item},'%')
-                </foreach>
-                ) and
+            <if test="where.expirationSt !=null">
+                `expiration` >= #{where.expirationSt} and
             </if>
-            <if test ="where.rightFuzzyExpiration!=null and where.rightFuzzyExpiration.size()>0">
-                (
-                <foreach collection="where.rightFuzzyExpiration"  separator="or" item="item">
-                    `Expiration` like concat(#{item},'%')
-                </foreach>
-                ) and
+            <if test="where.expirationEd!=null">
+                `expiration` &lt;= #{where.expirationEd} and
             </if>
                 <if test="where.purchasePriceList != null">
                     `purchase_price` in
@@ -252,7 +244,7 @@
             <if test="picture != null and picture!=''">
                 `picture` = #{picture} and
             </if>
-            <if test="expiration != null and expiration!=''">
+            <if test="expiration != null">
                 `expiration` = #{expiration} and
             </if>
             <if test="purchasePrice != null">
@@ -323,19 +315,11 @@
                         #{item}
                     </foreach> and
                 </if>
-                <if test ="fuzzyExpiration!=null and fuzzyExpiration.size()>0">
-                    (
-                    <foreach collection="fuzzyExpiration"  separator="or" item="item">
-                        `Expiration` like concat('%',#{item},'%')
-                    </foreach>
-                    ) and
+                <if test="expirationSt !=null">
+                    `expiration` >= #{expirationSt} and
                 </if>
-                <if test ="rightFuzzyExpiration!=null and rightFuzzyExpiration.size()>0">
-                    (
-                    <foreach collection="rightFuzzyExpiration"  separator="or" item="item">
-                        `Expiration` like concat(#{item},'%')
-                    </foreach>
-                    ) and
+                <if test="expirationEd!=null">
+                    `expiration` &lt;= #{expirationEd} and
                 </if>
                 <if test="purchasePriceList != null">
                     `purchase_price` in
@@ -391,7 +375,7 @@
             <if test="picture != null and picture!=''">
                 `picture` = #{picture} and
             </if>
-            <if test="expiration != null and expiration!=''">
+            <if test="expiration != null">
                 `expiration` = #{expiration} and
             </if>
             <if test="purchasePrice != null">
@@ -462,19 +446,11 @@
                             #{item}
                         </foreach> and
                     </if>
-                <if test ="fuzzyExpiration!=null and fuzzyExpiration.size()>0">
-                    (
-                    <foreach collection="fuzzyExpiration"  separator="or" item="item">
-                        `Expiration` like concat('%',#{item},'%')
-                    </foreach>
-                    ) and
+                <if test="expirationSt !=null">
+                    `expiration` >= #{expirationSt} and
                 </if>
-                <if test ="rightFuzzyExpiration!=null and rightFuzzyExpiration.size()>0">
-                    (
-                    <foreach collection="rightFuzzyExpiration"  separator="or" item="item">
-                        `Expiration` like concat(#{item},'%')
-                    </foreach>
-                    ) and
+                <if test="expirationEd!=null">
+                    `expiration` &lt;= #{expirationEd} and
                 </if>
                     <if test="purchasePriceList != null">
                         `purchase_price` in

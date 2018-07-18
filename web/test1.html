@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        class MerchandiseType {
+            constructor(name, picture, expiration, purchasePrice, wholesalePrice, retailPrice) {
+                this.name = name;
+                this.picture = picture;
+                this.expiration = expiration;
+                this.purchasePrice = purchasePrice;
+                this.wholesalePrice = wholesalePrice;
+                this.retailPrice = retailPrice;
+            }
+        }
+
+        class Merchandise {
+            constructor(typeId, productDate) {
+                this.typeId = typeId;
+                this.productDate = productDate;
+            }
+        }
+
+        class WholeSale {
+            constructor(typeId, count) {
+                this.typeId = typeId;
+                this.count = count;
+            }
+        }
+
+        class RetailOrder {
+            constructor(typeId, salesmanId, vipId) {
+                this.typeId = typeId;
+                this.salesmanId = salesmanId;
+                this.vipId = vipId;
+            }
+        }
+
+        class VipType {
+            constructor(id, name, discount) {
+                this.id = id;
+                this.name = name;
+                this.discount = discount;
+            }
+        }
+
+        class Vip {
+            constructor(id, typeId, phoneNumber) {
+                this.id = id;
+                this.typeId = typeId;
+                this.phoneNumber = phoneNumber;
+            }
+        }
+
+        $(function () {
+//            $.ajax({
+//                type: "post",
+//                url: "/api/merchandise-type/add",
+//                data: JSON.stringify(new Merchandise("小罐茶", null, "111111111", 100, 200, 300)),
+//                contentType: "application/json; charset=utf-8",
+//                success: function (result) {
+//                    alert(result);
+//                }
+//            });
+//            $.ajax({
+//                type:"post",
+//                url: "/api/merchandise-type/query",
+//                data: JSON.stringify(new MerchandiseType('脑白金', null, null, null, null, null)),
+//                contentType: "application/json; charset=utf-8",
+//                dataType:"json",
+//                success: function (result) {
+//                 alert(JSON.stringify(result));
+//                }
+//            });
+//            let MerchandiseList = [];
+//            for(let  i = 1; i<= 3;i++) {
+//                MerchandiseList.push(new Merchandise(i,"2018-06-11"));
+//            }
+//            //alert(JSON.stringify(MerchandiseList));
+//            $.ajax({
+//                type:"post",
+//                url: "/api/merchandises/purchase",
+//                data: JSON.stringify(MerchandiseList),
+//                contentType: "application/json; charset=utf-8",
+//                dataType:"json",
+//                success: function (result) {
+//               alert(result);
+//                }
+//            });
+//            $.get("/api/merchandises/query",function (result) {
+//                alert(JSON.stringify(result));
+//            });
+
+
+            //批发销售货物
+            //----------------------------------------
+//            let wholeSaleList = [];
+//            wholeSaleList.push(new WholeSale(1,5));
+//            wholeSaleList.push(new WholeSale(2,2));
+//            wholeSaleList.push(new WholeSale(3,1));
+//            $.ajax({
+//                type: "post",
+//                url: "/api/merchandises/wholesale",
+//                data: JSON.stringify(wholeSaleList),
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "json",
+//                success: function (result) {
+//                    alert(result);
+//                }
+//            });
+            //-----------------------------------
+
+
+            //查询批发销售记录
+            //-----------------------------------
+//            $.get("/api/wholesale-record/query", function (result) {
+//                alert(result);
+//            });
+            //-----------------------------------
+
+
+            //零售
+            //-----------------------------------
+//            $.ajax({
+//                type: "post",
+//                url: "/api/merchandises/retail",
+//                data: JSON.stringify(new RetailOrder(1, 1, 2)),
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "json",
+//                success: function (result) {
+//                    alert(result);
+//                }
+//            });
+            //-----------------------------------
+
+
+            //增加vip类型
+            //-----------------------------------
+//            $.ajax({
+//                type: "post",
+//                url: "/api/vip-type/add",
+//                data: JSON.stringify(new VipType(null, '钻石', 60)),
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "json",
+//                success: function (result) {
+//                    alert(result);
+//                }
+//            });
+            //-----------------------------------
+
+            //增加vip账号
+            //-----------------------------------
+//            $.ajax({
+//                type: "post",
+//                url: "/api/vip/add",
+//                data: JSON.stringify(new Vip(null, 1, 19530615)),
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "json",
+//                success: function (result) {
+//                    alert(result);
+//                }
+//            });
+            //-----------------------------------
+
+            //查询vip类型
+            //-----------------------------------
+//            $.get("/api/vip-type/query", function (result) {
+//                alert(JSON.stringify(result));
+//            });
+            //-----------------------------------
+
+            //查询vip
+            //-----------------------------------
+            $.get("/api/vip/query", function (result) {
+                alert(JSON.stringify(result));
+            });
+            //-----------------------------------
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

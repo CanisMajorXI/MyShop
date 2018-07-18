@@ -1,4 +1,7 @@
 package com.jzm.service;
 
-public class RetailService {
+public interface RetailService {
+
+    void doRetail(Integer typeId,Integer salesman,Integer vipId);
+
 }

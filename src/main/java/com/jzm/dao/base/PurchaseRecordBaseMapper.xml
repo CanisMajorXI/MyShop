@@ -42,8 +42,8 @@
         UPDATE `purchase_record`
         SET
         <trim suffixOverrides=",">
-            <if test="merchandiseId != null">
-                `merchandise_id` = #{merchandiseId},
+            <if test="id != null">
+                `id` = #{id},
             </if>
             <if test="date != null">
                 `date` = #{date},
@@ -51,7 +51,7 @@
         </trim>
         WHERE
         <trim suffixOverrides="and">
-                `id` = #{id} and
+                `merchandise_id` = #{merchandiseId} and
         </trim>
     </update>
 
@@ -59,8 +59,8 @@
         UPDATE `purchase_record`
         SET
         <trim suffixOverrides=",">
-        <if test="set.merchandiseId != null">
-            `merchandise_id` = #{set.merchandiseId},
+        <if test="set.id != null">
+            `id` = #{set.id},
         </if>
         <if test="set.date != null">
             `date` = #{set.date},

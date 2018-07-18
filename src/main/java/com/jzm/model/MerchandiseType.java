@@ -10,7 +10,7 @@ import java.util.List;
 */
 public class MerchandiseType implements Serializable {
 
-    private static final long serialVersionUID = 1531648957348L;
+    private static final long serialVersionUID = 1531735646238L;
 
 
     /**
@@ -34,13 +34,13 @@ public class MerchandiseType implements Serializable {
 
     /**
     * 商品有效期
-    * isNullAble:1
+    * isNullAble:0
     */
-    private String expiration;
+    private Integer expiration;
 
     /**
     * 商品进货价格
-    * isNullAble:1
+    * isNullAble:0
     */
     private java.math.BigDecimal purchasePrice;
 
@@ -69,9 +69,9 @@ public class MerchandiseType implements Serializable {
 
     public String getPicture(){return this.picture;}
 
-    public void setExpiration(String expiration){this.expiration = expiration;}
+    public void setExpiration(Integer expiration){this.expiration = expiration;}
 
-    public String getExpiration(){return this.expiration;}
+    public Integer getExpiration(){return this.expiration;}
 
     public void setPurchasePrice(java.math.BigDecimal purchasePrice){this.purchasePrice = purchasePrice;}
 
@@ -178,18 +178,18 @@ public class MerchandiseType implements Serializable {
         private List<String> rightFuzzyPicture;
 
         public List<String> getRightFuzzyPicture(){return this.rightFuzzyPicture;}
-        private List<String> expirationList;
+        private List<Integer> expirationList;
 
-        public List<String> getExpirationList(){return this.expirationList;}
+        public List<Integer> getExpirationList(){return this.expirationList;}
 
+        private Integer expirationSt;
 
-        private List<String> fuzzyExpiration;
+        private Integer expirationEd;
 
-        public List<String> getFuzzyExpiration(){return this.fuzzyExpiration;}
+        public Integer getExpirationSt(){return this.expirationSt;}
 
-        private List<String> rightFuzzyExpiration;
+        public Integer getExpirationEd(){return this.expirationEd;}
 
-        public List<String> getRightFuzzyExpiration(){return this.rightFuzzyExpiration;}
         private List<java.math.BigDecimal> purchasePriceList;
 
         public List<java.math.BigDecimal> getPurchasePriceList(){return this.purchasePriceList;}
@@ -361,37 +361,33 @@ public class MerchandiseType implements Serializable {
             return this;
         }
 
-        public QueryBuilder fuzzyExpiration (List<String> fuzzyExpiration){
-            this.fuzzyExpiration = fuzzyExpiration;
+        public QueryBuilder expirationBetWeen(Integer expirationSt,Integer expirationEd){
+            this.expirationSt = expirationSt;
+            this.expirationEd = expirationEd;
             return this;
         }
 
-        public QueryBuilder fuzzyExpiration (String ... fuzzyExpiration){
-            this.fuzzyExpiration = solveNullList(fuzzyExpiration);
+        public QueryBuilder expirationGreaterEqThan(Integer expirationSt){
+            this.expirationSt = expirationSt;
+            return this;
+        }
+        public QueryBuilder expirationLessEqThan(Integer expirationEd){
+            this.expirationEd = expirationEd;
             return this;
         }
 
-        public QueryBuilder rightFuzzyExpiration (List<String> rightFuzzyExpiration){
-            this.rightFuzzyExpiration = rightFuzzyExpiration;
-            return this;
-        }
 
-        public QueryBuilder rightFuzzyExpiration (String ... rightFuzzyExpiration){
-            this.rightFuzzyExpiration = solveNullList(rightFuzzyExpiration);
-            return this;
-        }
-
-        public QueryBuilder expiration(String expiration){
+        public QueryBuilder expiration(Integer expiration){
             setExpiration(expiration);
             return this;
         }
 
-        public QueryBuilder expirationList(String ... expiration){
+        public QueryBuilder expirationList(Integer ... expiration){
             this.expirationList = solveNullList(expiration);
             return this;
         }
 
-        public QueryBuilder expirationList(List<String> expiration){
+        public QueryBuilder expirationList(List<Integer> expiration){
             this.expirationList = expiration;
             return this;
         }
@@ -607,18 +603,18 @@ public class MerchandiseType implements Serializable {
         private List<String> rightFuzzyPicture;
 
         public List<String> getRightFuzzyPicture(){return this.rightFuzzyPicture;}
-        private List<String> expirationList;
+        private List<Integer> expirationList;
 
-        public List<String> getExpirationList(){return this.expirationList;}
+        public List<Integer> getExpirationList(){return this.expirationList;}
 
+        private Integer expirationSt;
 
-        private List<String> fuzzyExpiration;
+        private Integer expirationEd;
 
-        public List<String> getFuzzyExpiration(){return this.fuzzyExpiration;}
+        public Integer getExpirationSt(){return this.expirationSt;}
 
-        private List<String> rightFuzzyExpiration;
+        public Integer getExpirationEd(){return this.expirationEd;}
 
-        public List<String> getRightFuzzyExpiration(){return this.rightFuzzyExpiration;}
         private List<java.math.BigDecimal> purchasePriceList;
 
         public List<java.math.BigDecimal> getPurchasePriceList(){return this.purchasePriceList;}
@@ -742,32 +738,28 @@ public class MerchandiseType implements Serializable {
             return this;
         }
 
-        public ConditionBuilder fuzzyExpiration (List<String> fuzzyExpiration){
-            this.fuzzyExpiration = fuzzyExpiration;
+        public ConditionBuilder expirationBetWeen(Integer expirationSt,Integer expirationEd){
+            this.expirationSt = expirationSt;
+            this.expirationEd = expirationEd;
             return this;
         }
 
-        public ConditionBuilder fuzzyExpiration (String ... fuzzyExpiration){
-            this.fuzzyExpiration = solveNullList(fuzzyExpiration);
+        public ConditionBuilder expirationGreaterEqThan(Integer expirationSt){
+            this.expirationSt = expirationSt;
+            return this;
+        }
+        public ConditionBuilder expirationLessEqThan(Integer expirationEd){
+            this.expirationEd = expirationEd;
             return this;
         }
 
-        public ConditionBuilder rightFuzzyExpiration (List<String> rightFuzzyExpiration){
-            this.rightFuzzyExpiration = rightFuzzyExpiration;
-            return this;
-        }
 
-        public ConditionBuilder rightFuzzyExpiration (String ... rightFuzzyExpiration){
-            this.rightFuzzyExpiration = solveNullList(rightFuzzyExpiration);
-            return this;
-        }
-
-        public ConditionBuilder expirationList(String ... expiration){
+        public ConditionBuilder expirationList(Integer ... expiration){
             this.expirationList = solveNullList(expiration);
             return this;
         }
 
-        public ConditionBuilder expirationList(List<String> expiration){
+        public ConditionBuilder expirationList(List<Integer> expiration){
             this.expirationList = expiration;
             return this;
         }
@@ -886,7 +878,7 @@ public class MerchandiseType implements Serializable {
             this.obj.setPicture(picture);
             return this;
         }
-        public Builder expiration(String expiration){
+        public Builder expiration(Integer expiration){
             this.obj.setExpiration(expiration);
             return this;
         }
