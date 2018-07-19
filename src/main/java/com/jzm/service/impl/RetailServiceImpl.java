@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class RetailServiceImpl implements RetailService {
@@ -29,6 +30,8 @@ public class RetailServiceImpl implements RetailService {
 
     @Resource
     private VipTypeMapper vipTypeMapper = null;
+
+
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
@@ -64,6 +67,10 @@ public class RetailServiceImpl implements RetailService {
                 .date(LocalDate.now())
                 .build();
         retailRecordMapper.insertRetailRecord(retailRecord);
+    }
 
+    @Override
+    public List<RetailRecord> queryRetailRecord() {
+        return retailRecordMapper.queryRetailRecord(RetailRecord.QueryBuild().fetchAll().build());
     }
 }

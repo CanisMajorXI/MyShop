@@ -149,6 +149,15 @@ public class ShopController {
           return "false";
       }
     }
+    @GetMapping("/retail-record/query")
+    public List<RetailRecord> queryRetailQuery(){
+        try {
+            return retailService.queryRetailRecord();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
     @PostMapping("/vip-type/add")
     public String addVipType(@RequestBody VipType vipType) {
         try {

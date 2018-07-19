@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--private Integer id;-->
+
+<!--private String email;-->
+
+<!--private String password;-->
+
+<!--private Integer type;-->
+
+<!--private String nickname;-->
+        <!--private Integer userId;-->
+        <!--//    private String nickname;-->
+        <!--//    private String portrait;-->
+        <!--//    private String introduce;-->
+        <!--//    private Integer score;-->
+<mapper namespace="com.jzm.dao.user.UserMapper">
+    <resultMap id="user" type="user">
+        <id property="id" column="id"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="type" column="type"/>
+        <result property="nickname" column="nickname"/>
+    </resultMap>
+    <select id="getUserByEmail" resultMap="user" parameterType="string">
+        select *
+        from user
+        where email = #{email} and valid = true
+    </select>
+
+    <insert id="addAnUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into user (email, password, type, valid,nickname) VALUES (#{email}, #{password}, #{type}, 1,'维尼熊');
+    </insert>
+
+    <insert id="addAnUserInfo" parameterType="userInfo">
+        INSERT INTO user_info VALUES (#{userId},#{portrait},#{introduce},#{score},1);
+    </insert>
+
+</mapper>

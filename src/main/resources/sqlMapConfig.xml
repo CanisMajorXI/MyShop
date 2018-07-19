@@ -15,5 +15,9 @@
         <setting name="defaultStatementTimeout" value="25000"/>
     </settings>
     <!-- 别名配置 -->
+    <typeAliases>
+        <typeAlias type="com.jzm.model.User" alias="user"/>
+        <typeAlias type="com.jzm.model.UserInformation" alias="userInfo"/>
+    </typeAliases>
 
 </configuration>

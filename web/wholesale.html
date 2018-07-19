@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的商店</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navModule.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/navModule.js"></script>
+    <script src="js/mytools.js"></script>
+    <script src="./js/model.js"></script>
+    <script src="./js/merchandise-type.js"></script>
+    <style>
+        section {
+        }
+        .recommend {
+            min-height: 500px;
+            background-color: white;
+            width: 70%;
+        }
+
+        .recommend {
+            background-color: white;
+        }
+        .recommend-box {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-style: dashed;
+            border-color: #aaaaaa;
+            border-width: 0 0 2px;
+            height: 130px;
+        }
+        .recommend-box:hover{
+            background-color: #cecece;
+        }
+        .recommend-box img{
+            width: 100px;
+            height:100px;
+        }
+        .recommend-box .title {
+            margin-left: -4%;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .recommend-box .content {
+            position: relative;
+            height: 100%;
+        }
+        .recommend-box .content .author {
+            position: absolute;
+            bottom: 0;
+            margin-left: -10px;
+            font-size: 17px;
+            font-style: italic;
+        }
+        .recommend-box .info-group {
+            position: absolute;
+            font-size: 16px;
+            right: 15px;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-top">
+        <div class="title"><span>我的商店</span><small>&nbsp轻关易道，通商宽农</small></div>
+    </div>
+    <nav class="navbar  navbar-inverse" role="navigation" style="border-radius: 0">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav main-module">
+                    <!--<li class="active homepage"><a href=""/myForum/home.htm">主页</a></li>-->
+                    <li class="purchase"><a href="./purchase.html">进货</a></li>
+                    <li class="wholesale"><a href="./wholesale.html">批发</a></li>
+                    <li class="retail"><a  href="./retail.html">零售</a></li>
+                    <li class="staff"><a href="./staff.html">员工</a></li>
+                    <li class="memeber"><a href="./memeber.html">会员</a></li>
+                </ul>
+                <script>
+                    let curpage = window.location.pathname.substr(1).split('.')[0];
+                    $("header .main-module ."+curpage).addClass("active");
+
+                </script>
+                <ul class="nav navbar-nav navbar-right login-group">
+                    <li><a href="./register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section>
+    <div class="container-fluid recommend">
+        <div class="merchandise-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp商品名称</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>商品id</th>
+                    <th>商品名称</th>
+                    <th>建议零售价</th>
+                    <th>批发价</th>
+                    <th>商品保质期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr class="active">-->
+                <!--<td>产品1</td>-->
+                <!--<td>23/11/2013</td>-->
+                <!--<td>待发货</td>-->
+                <!--<td>待发货</td>-->
+                <!--<td>待发货</td>-->
+                <!--</tr>-->
+                <!--<tr class="success">-->
+                <!--<td>产品2</td>-->
+                <!--<td>10/11/2013</td>-->
+                <!--<td>发货中</td>-->
+                <!--<td>发货中</td>-->
+                <!--<td>发货中</td>-->
+                <!--</tr>-->
+                <!--<tr  class="warning">-->
+                <!--<td>产品3</td>-->
+                <!--<td>20/10/2013</td>-->
+                <!--<td>待确认</td>-->
+                <!--<td>待确认</td>-->
+                <!--<td>待确认</td>-->
+                <!--</tr>-->
+                <!--<tr  class="danger">-->
+                <!--<td>产品4</td>-->
+                <!--<td>20/10/2013</td>-->
+                <!--<td>已退货</td>-->
+                <!--<td>已退货</td>-->
+                <!--<td>已退货</td>-->
+                <!--</tr>-->
+                <!--<tr class="info">-->
+                <!--<td>产品2</td>-->
+                <!--<td>10/11/2013</td>-->
+                <!--<td>发货中</td>-->
+                <!--<td>发货中</td>-->
+                <!--<td>发货中</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a href="#">&larr; 上一页</a></li>
+                    <li class="next"><a href="#">下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<footer>
+    <div class="title">本网站仅供学习，由XiWinnie制作</div>
+</footer>
+</body>
+</html>

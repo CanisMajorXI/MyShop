@@ -1,62 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-    class MerchandiseType {
-        constructor(name, picture, expiration, purchasePrice, wholesalePrice, retailPrice) {
-            this.name = name;
-            this.picture = picture;
-            this.expiration = expiration;
-            this.purchasePrice = purchasePrice;
-            this.wholesalePrice = wholesalePrice;
-            this.retailPrice = retailPrice;
-        }
+class MerchandiseType {
+    constructor(name, picture, expiration, purchasePrice, wholesalePrice, retailPrice) {
+        this.name = name;
+        this.picture = picture;
+        this.expiration = expiration;
+        this.purchasePrice = purchasePrice;
+        this.wholesalePrice = wholesalePrice;
+        this.retailPrice = retailPrice;
     }
+}
 
-    class Merchandise {
-        constructor(typeId, productDate) {
-            this.typeId = typeId;
-            this.productDate = productDate;
-        }
+class Merchandise {
+    constructor(typeId, productDate) {
+        this.typeId = typeId;
+        this.productDate = productDate;
     }
+}
 
-    class WholeSale {
-        constructor(typeId, count) {
-            this.typeId = typeId;
-            this.count = count;
-        }
+class WholeSale {
+    constructor(typeId, count) {
+        this.typeId = typeId;
+        this.count = count;
     }
+}
 
-    class RetailOrder {
-        constructor(typeId, salesmanId, vipId) {
-            this.typeId = typeId;
-            this.salesmanId = salesmanId;
-            this.vipId = vipId;
-        }
+class RetailOrder {
+    constructor(typeId, salesmanId, vipId) {
+        this.typeId = typeId;
+        this.salesmanId = salesmanId;
+        this.vipId = vipId;
     }
+}
 
-    class VipType {
-        constructor(id, name, discount) {
-            this.id = id;
-            this.name = name;
-            this.discount = discount;
-        }
+class VipType {
+    constructor(id, name, discount) {
+        this.id = id;
+        this.name = name;
+        this.discount = discount;
     }
+}
 
-    class Vip {
-        constructor(id, typeId, phoneNumber) {
-            this.id = id;
-            this.typeId = typeId;
-            this.phoneNumber = phoneNumber;
-        }
+class Vip {
+    constructor(id, typeId, phoneNumber) {
+        this.id = id;
+        this.typeId = typeId;
+        this.phoneNumber = phoneNumber;
     }
+}
 
-    $(function () {
-        //增加商品类型
-        //----------------------------------------
+$(function () {
+    //增加商品类型
+    //----------------------------------------
 //            $.ajax({
 //                type: "post",
 //                url: "/api/merchandise-type/add",
@@ -66,11 +59,11 @@
 //                    alert(result);
 //                }
 //            });
-        //----------------------------------------
+    //----------------------------------------
 
 
-        //查询商品类型
-        //----------------------------------------
+    //查询商品类型
+    //----------------------------------------
 //            $.ajax({
 //                type:"post",
 //                url: "/api/merchandise-type/query",
@@ -81,11 +74,11 @@
 //                 alert(JSON.stringify(result));
 //                }
 //            });
-        //----------------------------------------
+    //----------------------------------------
 
 
-        //批发货物
-        //----------------------------------------
+    //批发货物
+    //----------------------------------------
 //            let MerchandiseList = [];
 //            for(let  i = 1; i<= 3;i++) {
 //                MerchandiseList.push(new Merchandise(i,"2018-06-11"));
@@ -101,20 +94,20 @@
 //               alert(result);
 //                }
 //            });
-        //----------------------------------------
+    //----------------------------------------
 
 
 
-        //查询商品库存
-        //----------------------------------------
+    //查询商品库存
+    //----------------------------------------
 //            $.get("/api/merchandises/query",function (result) {
 //                alert(JSON.stringify(result));
 //            });
-        //----------------------------------------
+    //----------------------------------------
 
 
-        //批发销售货物
-        //----------------------------------------
+    //批发销售货物
+    //----------------------------------------
 //            let wholeSaleList = [];
 //            wholeSaleList.push(new WholeSale(1,5));
 //            wholeSaleList.push(new WholeSale(2,2));
@@ -129,19 +122,19 @@
 //                    alert(result);
 //                }
 //            });
-        //-----------------------------------
+    //-----------------------------------
 
 
-        //查询批发销售记录
-        //-----------------------------------
+    //查询批发销售记录
+    //-----------------------------------
 //            $.get("/api/wholesale-record/query", function (result) {
 //                alert(result);
 //            });
-        //-----------------------------------
+    //-----------------------------------
 
 
-        //零售
-        //-----------------------------------
+    //零售
+    //-----------------------------------
 //            $.ajax({
 //                type: "post",
 //                url: "/api/merchandises/retail",
@@ -152,18 +145,18 @@
 //                    alert(result);
 //                }
 //          });
-        //-----------------------------------
+    //-----------------------------------
 
 
-        //查询零售订单
-        //-----------------------------------
-        $.get("/api/retail-record/query", function (result) {
-            alert(JSON.stringify(result));
-        });
-        //-----------------------------------
+    //查询零售订单
+    //-----------------------------------
+    // $.get("/api/retail-record/query", function (result) {
+    //     alert(JSON.stringify(result));
+    // });
+    //-----------------------------------
 
-        //增加vip类型
-        //-----------------------------------
+    //增加vip类型
+    //-----------------------------------
 //            $.ajax({
 //                type: "post",
 //                url: "/api/vip-type/add",
@@ -174,10 +167,10 @@
 //                    alert(result);
 //                }
 //            });
-        //-----------------------------------
+    //-----------------------------------
 
-        //增加vip账号
-        //-----------------------------------
+    //增加vip账号
+    //-----------------------------------
 //            $.ajax({
 //                type: "post",
 //                url: "/api/vip/add",
@@ -188,25 +181,19 @@
 //                    alert(result);
 //                }
 //            });
-        //-----------------------------------
+    //-----------------------------------
 
-        //查询vip类型
-        //-----------------------------------
+    //查询vip类型
+    //-----------------------------------
 //            $.get("/api/vip-type/query", function (result) {
 //                alert(JSON.stringify(result));
 //            });
-        //-----------------------------------
+    //-----------------------------------
 
-        //查询vip
-        //-----------------------------------
+    //查询vip
+    //-----------------------------------
 //            $.get("/api/vip/query", function (result) {
 //                alert(JSON.stringify(result));
 //            });
-        //-----------------------------------
-    });
-</script>
-</head>
-<body>
-
-</body>
-</html>
+    //-----------------------------------
+});

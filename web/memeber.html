@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的商店</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navModule.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/navModule.js"></script>
+    <script src="js/mytools.js"></script>
+    <style>
+        section {
+        }
+        .recommend {
+            min-height: 500px;
+            background-color: white;
+            width: 70%;
+        }
+
+        .recommend {
+            background-color: white;
+        }
+        .recommend-box {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-style: dashed;
+            border-color: #aaaaaa;
+            border-width: 0 0 2px;
+            height: 130px;
+        }
+        .recommend-box:hover{
+            background-color: #cecece;
+        }
+        .recommend-box img{
+            width: 100px;
+            height:100px;
+        }
+        .recommend-box .title {
+            margin-left: -4%;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .recommend-box .content {
+            position: relative;
+            height: 100%;
+        }
+        .recommend-box .content .author {
+            position: absolute;
+            bottom: 0;
+            margin-left: -10px;
+            font-size: 17px;
+            font-style: italic;
+        }
+        .recommend-box .info-group {
+            position: absolute;
+            font-size: 16px;
+            right: 15px;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-top">
+        <div class="title"><span>我的商店</span><small>&nbsp轻关易道，通商宽农</small></div>
+    </div>
+    <nav class="navbar  navbar-inverse" role="navigation" style="border-radius: 0">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav main-module">
+                    <!--<li class="active homepage"><a href=""/myForum/home.htm">主页</a></li>-->
+                    <li class="purchase"><a href="./purchase.html">进货</a></li>
+                    <li class="wholesale"><a href="./wholesale.html">批发</a></li>
+                    <li class="retail"><a  href="./retail.html">零售</a></li>
+                    <li class="staff"><a href="./staff.html">员工</a></li>
+                    <li class="memeber"><a href="./memeber.html">会员</a></li>
+                </ul>
+                <script>
+                    let curpage = window.location.pathname.substr(1).split('.')[0];
+                    $("header .main-module ."+curpage).addClass("active");
+
+                </script>
+                <ul class="nav navbar-nav navbar-right login-group">
+                    <li><a href="./register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section>
+    <div class="container-fluid recommend">
+    </div>
+
+</section>
+<footer>
+    <div class="title">本网站仅供学习，由XiWinnie制作</div>
+</footer>
+</body>
+</html>
