@@ -142,16 +142,16 @@
 
             //零售
             //-----------------------------------
-//            $.ajax({
-//                type: "post",
-//                url: "/api/merchandises/retail",
-//                data: JSON.stringify(new RetailOrder(1, 1, 2)),
-//                contentType: "application/json; charset=utf-8",
-//                dataType: "json",
-//                success: function (result) {
-//                    alert(result);
-//                }
-//            });
+            $.ajax({
+                type: "post",
+                url: "/api/merchandises/retail",
+                data: JSON.stringify(new RetailOrder(2, 1, 1)),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    alert(result);
+                }
+          });
             //-----------------------------------
 
 
@@ -192,9 +192,9 @@
 
             //查询vip
             //-----------------------------------
-            $.get("/api/vip/query", function (result) {
-                alert(JSON.stringify(result));
-            });
+//            $.get("/api/vip/query", function (result) {
+//                alert(JSON.stringify(result));
+//            });
             //-----------------------------------
         });
     </script>

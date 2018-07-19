@@ -97,7 +97,7 @@ public class WholeSaleServiceImpl implements WholeSaleService {
                 if (wholesaleRecord.getMerchandiseId().equals(merchandise.getId())) {
                     for (MerchandiseType merchandiseType : merchandiseTypeList) {
                         if (merchandise.getTypeId().equals(merchandiseType.getId())) {
-                            TernaryModel ternaryModel = new TernaryModel<WholesaleRecord, Merchandise, MerchandiseType>(wholesaleRecord, merchandise, merchandiseType);
+                            TernaryModel<WholesaleRecord, Merchandise, MerchandiseType> ternaryModel = new TernaryModel<WholesaleRecord, Merchandise, MerchandiseType>(wholesaleRecord, merchandise, merchandiseType);
                             ternaryModels.add(ternaryModel);
                             break;
                         }
