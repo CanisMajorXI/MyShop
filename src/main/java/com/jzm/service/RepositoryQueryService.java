@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RepositoryQueryService {
 
-    public List<Pair<Merchandise,MerchandiseType>> queryAll();
+     List<Pair<Merchandise,MerchandiseType>> queryAll();
 }

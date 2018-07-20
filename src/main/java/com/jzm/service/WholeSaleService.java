@@ -12,6 +12,8 @@ public interface WholeSaleService {
 
     void wholesaleMerchandises(List<Pair<Integer,Integer>>pairs);
 
+    void doWholeSale(List<Integer> idList);
+
     List<TernaryModel<WholesaleRecord,Merchandise,MerchandiseType>> wholesaleRecordQuery();
 
 }

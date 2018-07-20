@@ -12,6 +12,7 @@
     <script src="./js/model.js"></script>
     <script src="./js/merchandise-type.js"></script>
     <script src="./js/retail_record.js"></script>
+    <script src="./js/merchandise_retail.js"></script>
     <style>
         section {
         }
@@ -143,6 +144,80 @@
                     <td>查询中...</td>
                     <td>查询中...</td>
                     <td>查询中...</td>
+
+                </tr>
+                <tr  class="warning">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+
+                </tr>
+                <tr  class="danger">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+
+                </tr>
+                <tr class="info">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="merchandise-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp当前商品库存</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>商品单号</th>
+                    <th>商品名称</th>
+                    <th>生产日期</th>
+                    <th>保质期</th>
+                    <th>选择</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
                 </tr>
                 <tr  class="warning">
                     <td>查询中...</td>
@@ -169,8 +244,8 @@
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
                 </ul>
             </div>
 
@@ -252,8 +327,8 @@
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
                 </ul>
             </div>
 
@@ -261,6 +336,34 @@
     </div>
 
 </section>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    您确定要购买<span class="retail-model-id"></span>号商品吗
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="number" class="form-control retail-model-vipid" required="required">
+                    <span class="input-group-addon">请输入会员卡号</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary retail-model-btn">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <footer>
     <div class="title">本网站仅供学习，由XiWinnie制作</div>
 </footer>

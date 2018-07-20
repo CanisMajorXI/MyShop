@@ -36,10 +36,10 @@ public class RetailServiceImpl implements RetailService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public void doRetail(Integer typeId, Integer salesman, Integer vipId) {
+    public void doRetail(Integer id, Integer salesman, Integer vipId) {
         Merchandise queryMerchandise = Merchandise.QueryBuilder
                 .QueryBuild()
-                .fetchId().typeId(typeId).valid(1).build();
+                .fetchId().id(id).valid(1).build();
         Merchandise merchandise = merchandiseMapper.queryMerchandiseLimit1(queryMerchandise);
         if (merchandise == null) throw new RuntimeException("该商品没有库存！");
         MerchandiseType merchandiseType = merchandiseTypeMapper

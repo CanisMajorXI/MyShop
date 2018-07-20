@@ -16,6 +16,7 @@
             total_page = Math.ceil(record_show.length / 5);
             cur_page = 1;
         }
+        let genderArr = ['女','男'];
         let render = function () {
             $(".staff-table tbody").empty();
             for (let i = 0; i < 5; i++) {
@@ -23,7 +24,7 @@
                 $(".staff-table tbody").append('<tr class="' + colorarray[i] + '">'
                     + '<td>' + record_show[(cur_page - 1) * 5 + i].id + '</td>'
                     + '<td>' + record_show[(cur_page - 1 ) * 5 + i].name + '</td>'
-                    + '<td>' + record_show[(cur_page - 1 ) * 5 + i].gender + '</td>'
+                    + '<td>' + genderArr[Number(record_show[(cur_page - 1 ) * 5 + i].gender)] + '</td>'
                     + '</tr>');
             }
             //  alert(merchandise[0].id);

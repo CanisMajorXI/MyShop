@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RetailService {
 
-    void doRetail(Integer typeId,Integer salesman,Integer vipId);
+    void doRetail(Integer id,Integer salesman,Integer vipId);
 
     List<TernaryModel<RetailRecord, Merchandise, MerchandiseType>> queryRetailRecord();
 }

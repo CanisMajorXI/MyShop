@@ -30,7 +30,7 @@ public class RepositoryQueryServiceImpl implements RepositoryQueryService {
     public List<Pair<Merchandise,MerchandiseType>> queryAll() {
         List<Pair<Merchandise,MerchandiseType>> modelPairs = new ArrayList<>();
         MerchandiseType _merchandiseType = MerchandiseType.QueryBuild().fetchAll().build();
-        Merchandise _merchandise = Merchandise.QueryBuild().fetchAll().build();
+        Merchandise _merchandise = Merchandise.QueryBuild().fetchAll().valid(1).build();
         List<MerchandiseType> merchandiseTypeList = merchandiseTypeMapper.queryMerchandiseType(_merchandiseType);
         List<Merchandise> merchandiseList = merchandiseMapper.queryMerchandise(_merchandise);
         for (Merchandise merchandise : merchandiseList) {

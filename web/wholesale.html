@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>我的商店</title>
@@ -12,9 +13,10 @@
     <script src="./js/model.js"></script>
     <script src="./js/merchandise-type.js"></script>
     <script src="./js/wholesale_record.js"></script>
+    <script src="./js/merchandise_wholesale.js"></script>
     <style>
-        section {
-        }
+        section {}
+
         .recommend {
             min-height: 500px;
             background-color: white;
@@ -24,6 +26,7 @@
         .recommend {
             background-color: white;
         }
+
         .recommend-box {
             padding-top: 15px;
             padding-bottom: 15px;
@@ -32,22 +35,27 @@
             border-width: 0 0 2px;
             height: 130px;
         }
-        .recommend-box:hover{
+
+        .recommend-box:hover {
             background-color: #cecece;
         }
-        .recommend-box img{
+
+        .recommend-box img {
             width: 100px;
-            height:100px;
+            height: 100px;
         }
+
         .recommend-box .title {
             margin-left: -4%;
             font-size: 30px;
             font-weight: bold;
         }
+
         .recommend-box .content {
             position: relative;
             height: 100%;
         }
+
         .recommend-box .content .author {
             position: absolute;
             bottom: 0;
@@ -55,202 +63,371 @@
             font-size: 17px;
             font-style: italic;
         }
+
         .recommend-box .info-group {
             position: absolute;
             font-size: 16px;
             right: 15px;
             bottom: 0;
         }
-
+        .bige {
+            margin-left: 15px;
+        }
     </style>
 </head>
+
 <body>
-<header>
-    <div class="header-top">
-        <div class="title"><span>我的商店</span><small>&nbsp轻关易道，通商宽农</small></div>
-    </div>
-    <nav class="navbar  navbar-inverse" role="navigation" style="border-radius: 0">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#example-navbar-collapse">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <header>
+        <div class="header-top">
+            <div class="title">
+                <span>我的商店</span>
+                <small>&nbsp轻关易道，通商宽农</small>
             </div>
-            <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav navbar-nav main-module">
-                    <!--<li class="active homepage"><a href=""/myForum/home.htm">主页</a></li>-->
-                    <li class="purchase"><a href="./purchase.html">进货</a></li>
-                    <li class="wholesale"><a href="./wholesale.html">批发</a></li>
-                    <li class="retail"><a  href="./retail.html">零售</a></li>
-                    <li class="staff"><a href="./staff.html">员工</a></li>
-                    <li class="memeber"><a href="member.html">会员</a></li>
-                </ul>
+        </div>
+        <nav class="navbar  navbar-inverse" role="navigation" style="border-radius: 0">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav main-module">
+                        <!--<li class="active homepage"><a href=""/myForum/home.htm">主页</a></li>-->
+                        <li class="purchase">
+                            <a href="./purchase.html">进货</a>
+                        </li>
+                        <li class="wholesale">
+                            <a href="./wholesale.html">批发</a>
+                        </li>
+                        <li class="retail">
+                            <a href="./retail.html">零售</a>
+                        </li>
+                        <li class="staff">
+                            <a href="./staff.html">员工</a>
+                        </li>
+                        <li class="memeber">
+                            <a href="member.html">会员</a>
+                        </li>
+                    </ul>
+                    <script>
+                        let curpage = window.location.pathname.substr(1).split('.')[0];
+                        $("header .main-module ." + curpage).addClass("active");
+                    </script>
+                    <ul class="nav navbar-nav navbar-right login-group">
+                        <li>
+                            <a href="./register.html">
+                                <span class="glyphicon glyphicon-user"></span> 注册</a>
+                        </li>
+                        <li>
+                            <a href="./login.html">
+                                <span class="glyphicon glyphicon-log-in"></span> 登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container-fluid recommend">
+            <div class="merchandise-type-table" style="padding-top: 10px">
+                <table class="table">
+                    <div class="col-lg-8" style="text-align: center">
+                        <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp商品名称</span>
+                    </div>
+                    <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control show-by-name-text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default show-by-name-btn" type="button">
+                                    按名称显示
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>商品id</th>
+                            <th>商品名称</th>
+                            <th>建议零售价</th>
+                            <th>批发价</th>
+                            <th>商品保质期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="success">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="info">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding-left: 25px;padding-right: 25px">
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="###">&larr; 上一页</a>
+                        </li>
+                        <li class="next">
+                            <a href="###">下一页 &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="merchandise-table" style="padding-top: 10px">
+                <table class="table">
+                    <div class="col-lg-8" style="text-align: center">
+                        <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp当前商品库存</span>
+                    </div>
+                    <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control show-by-name-text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default show-by-name-btn" type="button">
+                                    按名称显示
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>商品单号</th>
+                            <th>商品名称</th>
+                            <th>生产日期</th>
+                            <th>保质期</th>
+                            <th>采购</th>
+                        </tr>
+                    </thead>
+                    <tbody id="merchandise-table-useful">
+                        <tr class="active">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+
+                        </tr>
+                        <tr class="success">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="info">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding-left: 25px;padding-right: 25px">
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="###">&larr; 上一页</a>
+                        </li>
+                        <li class="next">
+                            <a href="###">下一页 &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="list-group" id="submit-merchandise-list">
+                        <li class="list-group-item">
+                            <button class="btn btn-success submit-batch-order-btn">提交批发订单</button>
+                        </li>
+                    </ul>
+
+                </div>
                 <script>
-                    let curpage = window.location.pathname.substr(1).split('.')[0];
-                    $("header .main-module ."+curpage).addClass("active");
+                    let submit_List = [];
 
+                    // 添加到提交订单
+                    $(".merchandise-table").on('click', '.add-button', function () {
+                        let typeId = $(this).attr('merchandise-id');
+                        // 添加到提交订单数组
+                        submit_List.push(new WholeSale(typeId, 1));
+                        $(this).text("已经添加到订单");
+                        $(this).attr("disabled", true);
+                        let item_content = "<li class='list-group-item'>商品单号："+typeId+"<button class='btn btn-danger bige remove-button' merchandise-id='"+typeId+"'>删除订单</button></li>";
+                        $("#submit-merchandise-list").append(item_content);
+
+                        console.log("当前数组", submit_List);
+
+                    });
+
+                    // 从提交订单移除
+                    $("#submit-merchandise-list").on('click', '.remove-button', function () {
+                        let merchandiseId = $(this).attr('merchandise-id');
+                        submit_List = arr_remove(submit_List, 'typeId', merchandiseId);
+                        $(this).parent().remove();
+                        let button_list = $("#merchandise-table-useful").find('button');
+                        $.each(button_list, function (index, value) {
+                            if ($(value).attr('merchandise-id') == merchandiseId) {
+                                $(value).attr('disabled', false);
+                                $(value).text("添加到订单");
+                            }
+                        });
+
+                        console.log("当前数组", submit_List);
+                    });
+
+                    // 获取目标元素的数组下标
+                    let get_index = function (arr, type_name, except_value) {
+                        for (let index = 0; index < arr.length; index++) {
+                            if (arr[index][type_name] == except_value) {
+                                return index;
+                            }
+                        }
+                        return -1;
+                    }
+
+                    // 删除目标元素并返回一个新数组
+                    let arr_remove = function (arr, type_name, remove_value) {
+                        let index = get_index(arr, type_name, remove_value);
+                        new_arr = []
+                        if (index == -1) return new_arr;
+                        arr.splice(index, 1);
+                        arr.forEach(element => {
+                            if (element != undefined) {
+                                new_arr.push(element);
+                            }
+                        });
+                        return new_arr;
+                    }
                 </script>
-                <ul class="nav navbar-nav navbar-right login-group">
-                    <li><a href="./register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-                    <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
-                </ul>
+
+            </div>
+            <div class="wholesale-record-table" style="padding-top: 10px">
+                <table class="table">
+                    <div class="col-lg-8" style="text-align: center">
+                        <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp批发销售订单查询</span>
+                    </div>
+                    <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control show-by-name-text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default show-by-name-btn" type="button">
+                                    按名称显示
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>批发销售单号</th>
+                            <th>商品单号</th>
+                            <th>商品名称</th>
+                            <th>批发订单时间</th>
+                            <th>生产日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="success">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                        <tr class="info">
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                            <td>查询中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding-left: 25px;padding-right: 25px">
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="###">&larr; 上一页</a>
+                        </li>
+                        <li class="next">
+                            <a href="###">下一页 &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
-    </nav>
-</header>
-<section>
-    <div class="container-fluid recommend">
-        <div class="merchandise-type-table"  style="padding-top: 10px">
-            <table class="table">
-                <div class="col-lg-8" style="text-align: center">
-                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp商品名称</span>
-                </div>
-                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
-                <div class="col-lg-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control show-by-name-text">
-                        <span class="input-group-btn">
-						<button class="btn btn-default show-by-name-btn" type="button">
-							按名称显示
-						</button>
-					</span>
-                    </div><!-- /input-group -->
-                </div>
-                <thead>
-                <tr>
-                    <th>商品id</th>
-                    <th>商品名称</th>
-                    <th>建议零售价</th>
-                    <th>批发价</th>
-                    <th>商品保质期</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="active">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr class="success">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr  class="warning">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr  class="danger">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr class="info">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                </tbody>
-            </table>
-            <div style="padding-left: 25px;padding-right: 25px">
-                <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
-                </ul>
-            </div>
 
-        </div>
-        <div class="wholesale-record-table"  style="padding-top: 10px">
-            <table class="table">
-                <div class="col-lg-8" style="text-align: center">
-                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp批发销售订单查询</span>
-                </div>
-                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
-                <div class="col-lg-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control show-by-name-text">
-                        <span class="input-group-btn">
-						<button class="btn btn-default show-by-name-btn" type="button">
-							按名称显示
-						</button>
-					</span>
-                    </div><!-- /input-group -->
-                </div>
-                <thead>
-                <tr>
-                    <th>批发销售单号</th>
-                    <th>商品单号</th>
-                    <th>商品名称</th>
-                    <th>批发订单时间</th>
-                    <th>生产日期</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="active">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr class="success">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr  class="warning">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr  class="danger">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                <tr class="info">
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                    <td>查询中...</td>
-                </tr>
-                </tbody>
-            </table>
-            <div style="padding-left: 25px;padding-right: 25px">
-                <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-
-</section>
-<footer>
-    <div class="title">本网站仅供学习，由XiWinnie制作</div>
-</footer>
+    </section>
+    <footer>
+        <div class="title">本网站仅供学习，由XiWinnie制作</div>
+    </footer>
 </body>
+
 </html>

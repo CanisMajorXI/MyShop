@@ -191,8 +191,8 @@
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
                 </ul>
             </div>
 
@@ -200,7 +200,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    增加商品
+                    增加商品类型
                 </h3>
             </div>
             <div class="panel-body">
@@ -241,9 +241,9 @@
                                     url: "/api/merchandise-type/add",
                                     data: JSON.stringify(merandise),
                                     contentType: "application/json; charset=utf-8",
-                                    dataType:"json",
                                     success: function (result) {
                                         alert(result);
+                                        location.reload();
                                     }
                                 });
                             });
@@ -316,8 +316,8 @@
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
                 </ul>
             </div>
 
@@ -325,7 +325,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    增加商品类型
+                    进货
                 </h3>
             </div>
             <div class="panel-body">
@@ -379,8 +379,7 @@
                                 dataType: "json",
                                 success: function (result) {
                                     // json数据遍历添加select上
-                                    alert(JSON.stringify(result));
-                                    $.each(json, function (index, value) {
+                                    $.each(result, function (index, value) {
                                         type_name[value['id']] = value['name'];
                                         $("#select-name-return-id").append('<option value=' +
                                             value['id'] + '>' +
@@ -448,11 +447,11 @@
                             }]
 
                             // 遍历添加到select中
-                            $.each(json, function (index, value) {
-                                type_name[value['id']] = value['name'];
-                                $("#select-name-return-id").append('<option value=' + value['id'] + '>' +
-                                    value['name'] + '</option>');
-                            });
+//                            $.each(json, function (index, value) {
+//                                type_name[value['id']] = value['name'];
+//                                $("#select-name-return-id").append('<option value=' + value['id'] + '>' +
+//                                    value['name'] + '</option>');
+//                            });
                             let name_list = {
                                 'typeId': "商品名",
                                 'productDate': "生产日期"
@@ -493,7 +492,7 @@
                             $(".merchandises-submit-btn").click(function () {
                                 let MerchandiseList = []
                                 $.each(temp_list, function (i, val) {
-                                    if (val != undefined) {
+                                    if (val !== undefined) {
                                         MerchandiseList.push(val);
                                     }
                                 });
@@ -502,7 +501,6 @@
                                     url: "/api/merchandises/purchase",
                                     data: JSON.stringify(MerchandiseList),
                                     contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
                                     success: function (result) {
                                         if(result === 'ok')
                                             alert("成功！");
@@ -590,8 +588,8 @@
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a>&larr; 上一页</a></li>
-                    <li class="next"><a>下一页 &rarr;</a></li>
+                    <li class="previous"><a href="###">&larr; 上一页</a></li>
+                    <li class="next"><a href="###">下一页 &rarr;</a></li>
                 </ul>
             </div>
 

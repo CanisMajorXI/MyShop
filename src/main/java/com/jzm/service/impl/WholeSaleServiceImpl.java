@@ -32,6 +32,26 @@ public class WholeSaleServiceImpl implements WholeSaleService {
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     @Override
+    public void doWholeSale(List<Integer> idList) {
+        Integer batchId = new Random().nextInt(999999999) + 1;
+        Merchandise queryMerch = Merchandise.QueryBuild().idList(idList).fetchAll().build();
+        List<Merchandise> merchandiseList = merchandiseMapper.queryMerchandise(queryMerch);
+        merchandiseMapper.update(new Merchandise.UpdateBuilder()
+                .set(Merchandise.Build().valid(0).build())
+                .where(Merchandise.ConditionBuild().idList(idList).build())
+                .build());
+        for (Integer id : idList) {
+            WholesaleRecord wholesaleRecord = WholesaleRecord.Build()
+                    .id(batchId)
+                    .merchandiseId(id)
+                    .date(LocalDate.now())
+                    .build();
+            wholesaleRecordMapper.insertWholesaleRecord(wholesaleRecord);
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    @Override
     public void wholesaleMerchandises(List<Pair<Integer, Integer>> pairs) {
         Integer batchId = new Random().nextInt(999999999) + 1;
         for (Pair<Integer, Integer> pair : pairs) {
@@ -71,6 +91,7 @@ public class WholeSaleServiceImpl implements WholeSaleService {
 
         //Merchandise merchandise = Merchandise.UpdateBuild().
     }
+
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     @Override
     public List<TernaryModel<WholesaleRecord, Merchandise, MerchandiseType>> wholesaleRecordQuery() {

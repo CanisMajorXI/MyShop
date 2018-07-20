@@ -114,14 +114,15 @@ public class ShopController {
     }
 
     @PostMapping("/merchandises/wholesale")
-    public String wholesale(@RequestBody List<TempPair> tempPairs) {
+    public String wholesale(@RequestBody List<Integer> idList) {
         try {
-            List<Pair<Integer, Integer>> pairs = new ArrayList<>();
-            for (TempPair tempPair : tempPairs) {
-                pairs.add(new Pair<>(tempPair.getTypeId(), tempPair.getCount()));
-            }
+            wholeSaleService.doWholeSale(idList);
+            //List<Pair<Integer, Integer>> pairs = new ArrayList<>();
+//            for (TempPair tempPair : tempPairs) {
+//                pairs.add(new Pair<>(tempPair.getTypeId(), tempPair.getCount()));
+//            }
             //  System.out.println(pairs.get(0).getKey()+"         "+pairs.get(0).getKey());
-            wholeSaleService.wholesaleMerchandises(pairs);
+        //    wholeSaleService.wholesaleMerchandises(pairs);
             return "ok";
         } catch (Exception e) {
             e.printStackTrace();
