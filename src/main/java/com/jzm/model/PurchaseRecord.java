@@ -3,8 +3,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.jzm.util.LocalDateDeserializer;
 import com.jzm.util.LocalDateSerializer;
+import com.jzm.util.LocalDateTimeDeserializer;
+import com.jzm.util.LocalDateTimeSerializer;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,8 +38,8 @@ public class PurchaseRecord implements Serializable {
     * 进货记录日期
     * isNullAble:0
     */
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private java.time.LocalDateTime date;
 
 

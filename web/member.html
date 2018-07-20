@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="css/navModule.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/navModule.js"></script>
-    <script src="js/mytools.js"></script>
+    <script src="./js/navModule.js"></script>
+    <script src="./js/mytools.js"></script>
+    <script src="./js/member.js"></script>
     <style>
         section {
         }
@@ -84,7 +85,7 @@
                     <li class="wholesale"><a href="./wholesale.html">批发</a></li>
                     <li class="retail"><a  href="./retail.html">零售</a></li>
                     <li class="staff"><a href="./staff.html">员工</a></li>
-                    <li class="memeber"><a href="./memeber.html">会员</a></li>
+                    <li class="memeber"><a href="./member.html">会员</a></li>
                 </ul>
                 <script>
                     let curpage = window.location.pathname.substr(1).split('.')[0];
@@ -101,6 +102,71 @@
 </header>
 <section>
     <div class="container-fluid recommend">
+        <div class="member-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp批发销售订单查询</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>会员ID</th>
+                    <th>手机号</th>
+                    <th>会员类型</th>
+                    <th>折扣程度</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 
 </section>

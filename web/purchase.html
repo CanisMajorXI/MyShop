@@ -11,8 +11,11 @@
     <script src="js/mytools.js"></script>
     <script src="./js/model.js"></script>
     <script src="./js/merchandise-type.js"></script>
+    <script src="./js/merchandise.js"></script>
+    <script src="./js/purchase_record.js"></script>
     <style>
         section {
+            min-height: 2000px;
         }
         .recommend {
             min-height: 500px;
@@ -106,7 +109,7 @@
                     <li class="wholesale"><a href="./wholesale.html">批发</a></li>
                     <li class="retail"><a  href="./retail.html">零售</a></li>
                     <li class="staff"><a href="./staff.html">员工</a></li>
-                    <li class="memeber"><a href="./memeber.html">会员</a></li>
+                    <li class="memeber"><a href="member.html">会员</a></li>
                 </ul>
                 <script>
                     let curpage = window.location.pathname.substr(1).split('.')[0];
@@ -123,7 +126,7 @@
 </header>
 <section>
     <div class="container-fluid recommend">
-        <div class="merchandise-table"  style="padding-top: 10px">
+        <div class="merchandise-type-table"  style="padding-top: 10px">
             <table class="table">
                 <div class="col-lg-8" style="text-align: center">
                     <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp商品名称</span>
@@ -149,47 +152,172 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!--<tr class="active">-->
-                    <!--<td>产品1</td>-->
-                    <!--<td>23/11/2013</td>-->
-                    <!--<td>待发货</td>-->
-                    <!--<td>待发货</td>-->
-                    <!--<td>待发货</td>-->
-                <!--</tr>-->
-                <!--<tr class="success">-->
-                    <!--<td>产品2</td>-->
-                    <!--<td>10/11/2013</td>-->
-                    <!--<td>发货中</td>-->
-                    <!--<td>发货中</td>-->
-                    <!--<td>发货中</td>-->
-                <!--</tr>-->
-                <!--<tr  class="warning">-->
-                    <!--<td>产品3</td>-->
-                    <!--<td>20/10/2013</td>-->
-                    <!--<td>待确认</td>-->
-                    <!--<td>待确认</td>-->
-                    <!--<td>待确认</td>-->
-                <!--</tr>-->
-                <!--<tr  class="danger">-->
-                    <!--<td>产品4</td>-->
-                    <!--<td>20/10/2013</td>-->
-                    <!--<td>已退货</td>-->
-                    <!--<td>已退货</td>-->
-                    <!--<td>已退货</td>-->
-                <!--</tr>-->
-                <!--<tr class="info">-->
-                    <!--<td>产品2</td>-->
-                    <!--<td>10/11/2013</td>-->
-                    <!--<td>发货中</td>-->
-                    <!--<td>发货中</td>-->
-                    <!--<td>发货中</td>-->
-                <!--</tr>-->
+                <tr class="active">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
                 </tbody>
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a href="#">&larr; 上一页</a></li>
-                    <li class="next"><a href="#">下一页 &rarr;</a></li>
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    增加商品
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div id="add-merchandiseType-form">
+                    <!-- form-begin -->
+                    <form  class ="form-inline" role="form">
+                        <div class="form-group">
+                            <label>商品类型：</label>
+                            <input type="text" class="form-control name"   placeholder="请输入商品名称">
+                        </div>
+                        <div class="form-group">
+                            <label>过期时间：</label>
+                            <input type="text" class="form-control expiration" placeholder="请输入名称">
+                        </div>
+                        <div class="form-group">
+                            <label>进货价格：</label>
+                            <input type="number" class="form-control purchasePrice"  placeholder="请输入进货价格">
+                        </div>
+                        <div class="form-group">
+                            <label>批发价格：</label>
+                            <input type="number" class="form-control wholesalePrice"  placeholder="请输入批发价格">
+                        </div>
+                        <div class="form-group">
+                            <label>零售价格：</label>
+                            <input type="number" class="form-control retailPrice" placeholder="请输入零售价格">
+                        </div>
+                        <button type="button" class="btn btn-success merchandise-type-btn">提交</button>
+                        <button type="reset" class="btn btn-danger">重置</button>
+                        <script>
+                            $(".merchandise-type-btn").click(function () {
+                               let merandise =  new MerchandiseType($("#add-merchandiseType-form .name").val(),
+                                    null, $("#add-merchandiseType-form .expiration").val(),
+                                    $("#add-merchandiseType-form .purchasePrice").val(),
+                                    $("#add-merchandiseType-form .wholesalePrice").val(),
+                                    $("#add-merchandiseType-form .retailPrice").val());
+                                $.ajax({
+                                    type: "post",
+                                    url: "/api/merchandise-type/add",
+                                    data: JSON.stringify(merandise),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType:"json",
+                                    success: function (result) {
+                                        alert(result);
+                                    }
+                                });
+                            });
+
+                        </script>
+                    </form>
+                    <!-- form-end -->
+                    <script>
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="merchandise-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp当前商品库存</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>商品单号</th>
+                    <th>商品名称</th>
+                    <th>生产日期</th>
+                    <th>保质期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
                 </ul>
             </div>
 
@@ -201,35 +329,272 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <div id="add-merchandiseType-form">
+                <div id="add-merchandises-list">
+                    <ul class="list-group" id="shuigaishuishabi">
+                    </ul>
+                </div>
+                <div id="add-merchandise-form">
                     <!-- form-begin -->
-                    <form  class ="form-inline" role="form">
+                    <form class="form-inline" role="form">
                         <div class="form-group">
-                            <label for="name">商品类型：</label>
-                            <input type="text" class="form-control" id="name" placeholder="请输入商品名称">
+                            <label>商品名称：</label>
+                            <select class="form-control" id="select-name-return-id">
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="name">过期时间：</label>
-                            <input type="text" class="form-control" id="expiration" placeholder="请输入名称">
+                            <label>生产日期：</label>
+                            <input type="text" class="form-control expiration" id="jiangzemin"placeholder="请输入名称">
                         </div>
-                        <div class="form-group">
-                            <label for="name">进货价格：</label>
-                            <input type="number" class="form-control" id="purchasePrice" placeholder="请输入进货价格">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">批发价格：</label>
-                            <input type="number" class="form-control" id="wholesalePrice" placeholder="请输入批发价格">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">零售价格：</label>
-                            <input type="number" class="form-control" id="retailPrice" placeholder="请输入零售价格">
-                        </div>
-                        <button type="button" class="btn btn-success">提交</button>
+                        <button type="button" class="btn btn-success merchandise-add-btn">添加到提交列表</button>
+                        <button type="button" class="btn btn-success merchandises-submit-btn">全部提交</button>
                         <button type="reset" class="btn btn-danger">重置</button>
+                        <script>
+//                            // 商品类型类
+//                            class MerchandiseType {
+//                                constructor(name, picture, expiration, purchasePrice, wholesalePrice, retailPrice) {
+//                                    this.name = name;
+//                                    this.picture = picture;
+//                                    this.expiration = expiration;
+//                                    this.purchasePrice = purchasePrice;
+//                                    this.wholesalePrice = wholesalePrice;
+//                                    this.retailPrice = retailPrice;
+//                                }
+//                            }
+//                            // 商品实体类
+//                            class Merchandise {
+//                                constructor(typeId, productDate) {
+//                                    this.typeId = typeId;
+//                                    this.productDate = productDate;
+//                                }
+//                            }
+                            let temp_list = [];
+                            // 先查询商品的类型和id，然后建立一个映射数组
+                            let type_name = {};
+                            $.ajax({
+                                type: "post",
+                                url: "/api/merchandise-type/query",
+                                data: JSON.stringify(new MerchandiseType(null, null, null, null, null,
+                                    null)),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (result) {
+                                    // json数据遍历添加select上
+                                    alert(JSON.stringify(result));
+                                    $.each(json, function (index, value) {
+                                        type_name[value['id']] = value['name'];
+                                        $("#select-name-return-id").append('<option value=' +
+                                            value['id'] + '>' +
+                                            value['name'] + '</option>');
+                                    });
+                                }
+                            });
+
+                            let json = [{
+                                "id": 1,
+                                "name": "脑白金",
+                                "picture": "111",
+                                "expiration": 111,
+                                "purchasePrice": 500,
+                                "wholesalePrice": 800,
+                                "retailPrice": 999
+                            }, {
+                                "id": 2,
+                                "name": "脑黄金",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }, {
+                                "id": 3,
+                                "name": "安利",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }, {
+                                "id": 4,
+                                "name": "纽崔莱",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }, {
+                                "id": 5,
+                                "name": "纽崔莱",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }, {
+                                "id": 6,
+                                "name": "纽崔莱",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }, {
+                                "id": 7,
+                                "name": "小罐茶",
+                                "picture": null,
+                                "expiration": 111111111,
+                                "purchasePrice": 100,
+                                "wholesalePrice": 200,
+                                "retailPrice": 300
+                            }]
+
+                            // 遍历添加到select中
+                            $.each(json, function (index, value) {
+                                type_name[value['id']] = value['name'];
+                                $("#select-name-return-id").append('<option value=' + value['id'] + '>' +
+                                    value['name'] + '</option>');
+                            });
+                            let name_list = {
+                                'typeId': "商品名",
+                                'productDate': "生产日期"
+                            }
+
+                            let item_index = 0;
+                            // 添加到待提交列表中
+                            $(".merchandise-add-btn").click(function () {
+                                let merandise = new Merchandise($("#select-name-return-id").val(),
+                                    $("#add-merchandise-form .expiration").val());
+                                temp_list[item_index] = merandise;
+
+                                let p_node = document.createElement('p');
+                                let index = 0;
+                                $.each(merandise, function (index, value) {
+                                    if (index === "typeId") {
+                                        $(p_node).append(name_list[index] + ' : ' + type_name[value] +
+                                            " ");
+                                    } else {
+                                        $(p_node).append(name_list[index] + ' : ' + value);
+                                    }
+                                });
+                                //
+                                let item_node =
+                                    "<li class='list-group-item'><button class='btn btn-danger remove-merchandise' item-id='" +
+                                    (item_index++) + "'>删除</button></li>";
+                                $("#shuigaishuishabi").append($(item_node).prepend(p_node));
+                            });
+
+                            // 动态绑定删除按钮
+                            $("#shuigaishuishabi").on('click', '.remove-merchandise', function () {
+                                let id = $(this).attr("item-id");
+                                temp_list.splice(id, 1);
+                                $(this).parent().remove();
+                            });
+
+                            // 提交全部
+                            $(".merchandises-submit-btn").click(function () {
+                                let MerchandiseList = []
+                                $.each(temp_list, function (i, val) {
+                                    if (val != undefined) {
+                                        MerchandiseList.push(val);
+                                    }
+                                });
+                                $.ajax({
+                                    type: "post",
+                                    url: "/api/merchandises/purchase",
+                                    data: JSON.stringify(MerchandiseList),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (result) {
+                                        if(result === 'ok')
+                                            alert("成功！");
+                                        location.reload();
+                                    }
+                                });
+                            });
+                        </script>
                     </form>
                     <!-- form-end -->
+                    <script>
+                    </script>
+                    <script src="./laydate/laydate.js"></script>
+                    <script>
+                        //渲染日期组件
+                        laydate.render({
+                            elem: '#jiangzemin' //指定元素
+                        });
+                    </script>
                 </div>
             </div>
+        </div>
+        <div class="purchase-record-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp进货订单查询</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>进货单号</th>
+                    <th>商品单号</th>
+                    <th>商品名称</th>
+                    <th>订单时间</th>
+                    <th>生产日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                <td>查询中...</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
         </div>
 
     </div>

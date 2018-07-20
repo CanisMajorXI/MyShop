@@ -11,6 +11,7 @@
     <script src="js/mytools.js"></script>
     <script src="./js/model.js"></script>
     <script src="./js/merchandise-type.js"></script>
+    <script src="./js/wholesale_record.js"></script>
     <style>
         section {
         }
@@ -86,7 +87,7 @@
                     <li class="wholesale"><a href="./wholesale.html">批发</a></li>
                     <li class="retail"><a  href="./retail.html">零售</a></li>
                     <li class="staff"><a href="./staff.html">员工</a></li>
-                    <li class="memeber"><a href="./memeber.html">会员</a></li>
+                    <li class="memeber"><a href="member.html">会员</a></li>
                 </ul>
                 <script>
                     let curpage = window.location.pathname.substr(1).split('.')[0];
@@ -103,7 +104,7 @@
 </header>
 <section>
     <div class="container-fluid recommend">
-        <div class="merchandise-table"  style="padding-top: 10px">
+        <div class="merchandise-type-table"  style="padding-top: 10px">
             <table class="table">
                 <div class="col-lg-8" style="text-align: center">
                     <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp商品名称</span>
@@ -129,47 +130,118 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!--<tr class="active">-->
-                <!--<td>产品1</td>-->
-                <!--<td>23/11/2013</td>-->
-                <!--<td>待发货</td>-->
-                <!--<td>待发货</td>-->
-                <!--<td>待发货</td>-->
-                <!--</tr>-->
-                <!--<tr class="success">-->
-                <!--<td>产品2</td>-->
-                <!--<td>10/11/2013</td>-->
-                <!--<td>发货中</td>-->
-                <!--<td>发货中</td>-->
-                <!--<td>发货中</td>-->
-                <!--</tr>-->
-                <!--<tr  class="warning">-->
-                <!--<td>产品3</td>-->
-                <!--<td>20/10/2013</td>-->
-                <!--<td>待确认</td>-->
-                <!--<td>待确认</td>-->
-                <!--<td>待确认</td>-->
-                <!--</tr>-->
-                <!--<tr  class="danger">-->
-                <!--<td>产品4</td>-->
-                <!--<td>20/10/2013</td>-->
-                <!--<td>已退货</td>-->
-                <!--<td>已退货</td>-->
-                <!--<td>已退货</td>-->
-                <!--</tr>-->
-                <!--<tr class="info">-->
-                <!--<td>产品2</td>-->
-                <!--<td>10/11/2013</td>-->
-                <!--<td>发货中</td>-->
-                <!--<td>发货中</td>-->
-                <!--<td>发货中</td>-->
-                <!--</tr>-->
+                <tr class="active">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
                 </tbody>
             </table>
             <div style="padding-left: 25px;padding-right: 25px">
                 <ul class="pager">
-                    <li class="previous"><a href="#">&larr; 上一页</a></li>
-                    <li class="next"><a href="#">下一页 &rarr;</a></li>
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="wholesale-record-table"  style="padding-top: 10px">
+            <table class="table">
+                <div class="col-lg-8" style="text-align: center">
+                    <span style="font-size: 20px;font-weight: bold">&nbsp&nbsp批发销售订单查询</span>
+                </div>
+                <!--<caption style="font-size: 20px;text-align: center;font-weight: bold">商品列表</caption>-->
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control show-by-name-text">
+                        <span class="input-group-btn">
+						<button class="btn btn-default show-by-name-btn" type="button">
+							按名称显示
+						</button>
+					</span>
+                    </div><!-- /input-group -->
+                </div>
+                <thead>
+                <tr>
+                    <th>批发销售单号</th>
+                    <th>商品单号</th>
+                    <th>商品名称</th>
+                    <th>批发订单时间</th>
+                    <th>生产日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="success">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="warning">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr  class="danger">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                <tr class="info">
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                    <td>查询中...</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="padding-left: 25px;padding-right: 25px">
+                <ul class="pager">
+                    <li class="previous"><a>&larr; 上一页</a></li>
+                    <li class="next"><a>下一页 &rarr;</a></li>
                 </ul>
             </div>
 

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,7 +71,39 @@ public class RetailServiceImpl implements RetailService {
     }
 
     @Override
-    public List<RetailRecord> queryRetailRecord() {
-        return retailRecordMapper.queryRetailRecord(RetailRecord.QueryBuild().fetchAll().build());
+    public List<TernaryModel<RetailRecord, Merchandise, MerchandiseType>> queryRetailRecord() {
+        List<TernaryModel<RetailRecord, Merchandise, MerchandiseType>> ternaryModels = new ArrayList<>();
+
+        List<RetailRecord> retailRecordList = retailRecordMapper
+                .queryRetailRecord(RetailRecord
+                        .QueryBuild()
+                        .fetchAll()
+                        .build());
+        List<Merchandise> merchandiseList = merchandiseMapper
+                .queryMerchandise(Merchandise
+                        .QueryBuild()
+                        .fetchAll()
+                        .build());
+        List<MerchandiseType> merchandiseTypeList = merchandiseTypeMapper
+                .queryMerchandiseType(MerchandiseType
+                        .QueryBuild()
+                        .fetchAll()
+                        .build());
+
+        for (RetailRecord retailRecord : retailRecordList) {
+            for (Merchandise merchandise : merchandiseList) {
+                if (retailRecord.getMerchandiseId().equals(merchandise.getId())) {
+                    for (MerchandiseType merchandiseType : merchandiseTypeList) {
+                        if (merchandise.getTypeId().equals(merchandiseType.getId())) {
+                            TernaryModel<RetailRecord, Merchandise, MerchandiseType> ternaryModel = new TernaryModel<RetailRecord, Merchandise, MerchandiseType>(retailRecord, merchandise, merchandiseType);
+                            ternaryModels.add(ternaryModel);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return ternaryModels;
     }
 }

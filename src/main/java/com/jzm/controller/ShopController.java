@@ -43,6 +43,9 @@ public class ShopController {
 
     @Resource
     private VipService vipService = null;
+
+    @Resource
+    private SalesmanService salesmanService  = null;
     /*/**
      * 主键
      * 商品类型Id
@@ -93,11 +96,11 @@ public class ShopController {
     public String purchaseMerchandises(@RequestBody List<Merchandise> merchandiseList) {
         try {
             purchaseService.purchaseMerchandises(merchandiseList);
+            return "ok";
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
         }
-        return "ok";
     }
 
     @GetMapping("/merchandises/query")
@@ -125,7 +128,15 @@ public class ShopController {
             return "error";
         }
     }
-
+    @GetMapping("/purchase-record/query")
+    public List<TernaryModel<PurchaseRecord, Merchandise, MerchandiseType>> purchaseRecordQuery() {
+        try {
+            return purchaseService.purchaseRecordQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
     @GetMapping("/wholesale-record/query")
     public List<TernaryModel<WholesaleRecord, Merchandise, MerchandiseType>> wholesaleRecordQuery() {
         try {
@@ -150,7 +161,7 @@ public class ShopController {
       }
     }
     @GetMapping("/retail-record/query")
-    public List<RetailRecord> queryRetailQuery(){
+    public List<TernaryModel<RetailRecord, Merchandise, MerchandiseType>> queryRetailQuery(){
         try {
             return retailService.queryRetailRecord();
         }catch (Exception e){
@@ -194,6 +205,15 @@ public class ShopController {
         }catch (Exception e){
             e.printStackTrace();
             return new LinkedList<>();
+        }
+    }
+    @GetMapping("/staff/query")
+    public List<Salesman> querySalesman(){
+        try {
+            return  salesmanService.querySalesman();
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 

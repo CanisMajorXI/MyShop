@@ -1,81 +1,84 @@
-let merchandise = {};
-let total_page = 0;
-let cur_page = 0;
-let merch_show = [];
-let colorarray = ['active', 'success', 'info', 'warning', 'danger'];
-$(function () {
-    $.ajax({
-        type: "post",
-        url: "/api/merchandise-type/query",
-        data: JSON.stringify(new MerchandiseType(null, null, null, null, null, null)),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            merchandise = result;
-            merch_show = merchandise;
-            pageFresh();
-            render();
-        }
-    });
-    let pageFresh = function () {
-        total_page = Math.ceil(merch_show.length / 5);
-        cur_page = 1;
-        //alert("total"+total_page + "curpos"+cur_page);
-    }
-    let render = function () {
-        $(".merchandise-table tbody").empty();
-        for (let i = 0; i < 5; i++) {
-            if (merch_show[(cur_page - 1) * 5 + i] === undefined) break;
-            $(".merchandise-table tbody").append('<tr class="' + colorarray[i] + '">'
-                + '<td>' + merch_show[(cur_page - 1) * 5 + i].id + '</td>'
-                + '<td>' + merch_show[(cur_page - 1 ) * 5 + i].name + '</td>'
-                + '<td>' + merch_show[(cur_page - 1 ) * 5 + i].retailPrice + '</td>'
-                + ' <td>' + merch_show[(cur_page - 1) * 5 + i].wholesalePrice + '</td>'
-                + '<td>' + merch_show[(cur_page - 1) * 5 + i].expiration + '天' + '</td>'
-                + '</tr>');
-        }
-        //  alert(merchandise[0].id);
-    };
-    $(".merchandise-table .previous").click(function () {
-        if (cur_page > 1) {
-            cur_page--;
-            render();
-        } else {
-            alert("已经到第一页了！");
-        }
-    });
-    $(".merchandise-table .next").click(function () {
-        if (cur_page < total_page) {
-            cur_page++;
-            render();
-        }
-        else {
-            alert("已经到最后一页了！");
-        }
-    });
-    $(".merchandise-table .show-by-name-btn").click(function () {
-        let text = $(".merchandise-table .show-by-name-text").val();
-        if (text === '') {
-            merch_show  = merchandise;
-            pageFresh();
-            render();
-            return;
-        }
-        merch_show = merchandise.filter(function (element) {
-            //    alert(element.name === text);
-            return element.name === text;
+(function () {
+    let merchandise = {};
+    let total_page = 0;
+    let cur_page = 0;
+    let merch_show = [];
+    let colorarray = ['active', 'success', 'info', 'warning', 'danger'];
+    $(function () {
+        $.ajax({
+            type: "post",
+            url: "/api/merchandise-type/query",
+            data: JSON.stringify(new MerchandiseType(null, null, null, null, null, null)),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                merchandise = result;
+                merch_show = merchandise;
+                pageFresh();
+                render();
+            }
         });
-        pageFresh();
-        render();
-        // arrnew[text] = $.map(merchandise, item => {
-        //     if (item.name === text) return item.id;
-        // });
+        let pageFresh = function () {
+            total_page = Math.ceil(merch_show.length / 5);
+            cur_page = 1;
+            //alert("total"+total_page + "curpos"+cur_page);
+        }
+        let render = function () {
+            $(".merchandise-type-table tbody").empty();
+            for (let i = 0; i < 5; i++) {
+                if (merch_show[(cur_page - 1) * 5 + i] === undefined) break;
+                $(".merchandise-type-table tbody").append('<tr class="' + colorarray[i] + '">'
+                    + '<td>' + merch_show[(cur_page - 1) * 5 + i].id + '</td>'
+                    + '<td>' + merch_show[(cur_page - 1 ) * 5 + i].name + '</td>'
+                    + '<td>' + merch_show[(cur_page - 1 ) * 5 + i].retailPrice +'元' +'</td>'
+                    + ' <td>' + merch_show[(cur_page - 1) * 5 + i].wholesalePrice +'元'+ '</td>'
+                    + '<td>' + merch_show[(cur_page - 1) * 5 + i].expiration + '天' + '</td>'
+                    + '</tr>');
+            }
+            //  alert(merchandise[0].id);
+        };
+        $(".merchandise-type-table .previous").click(function () {
+            if (cur_page > 1) {
+                cur_page--;
+                render();
+            } else {
+                alert("已经到第一页了！");
+            }
+        });
+        $(".merchandise-type-table .next").click(function () {
+            if (cur_page < total_page) {
+                cur_page++;
+                render();
+            }
+            else {
+                alert("已经到最后一页了！");
+            }
+        });
+        $(".merchandise-type-table .show-by-name-btn").click(function () {
+            let text = $(".merchandise-type-table .show-by-name-text").val();
+            if (text === '') {
+                merch_show  = merchandise;
+                pageFresh();
+                render();
+                return;
+            }
+            merch_show = merchandise.filter(function (element) {
+                //    alert(element.name === text);
+                return element.name === text;
+            });
+            pageFresh();
+            render();
+            // arrnew[text] = $.map(merchandise, item => {
+            //     if (item.name === text) return item.id;
+            // });
 
-        //alert(arrnew.length);
+            //alert(arrnew.length);
+        });
+
     });
+})();
 
-});
-[{
+let testdemo1 = [{
     "id": 1,
     "name": "脑白金",
     "picture": "111",
